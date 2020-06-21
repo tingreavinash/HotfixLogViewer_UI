@@ -17,7 +17,7 @@
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Hotfix Log Viewer1</title>
+<title>Hotfix Log Viewer</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" type="text/css" href="css/index.css">
