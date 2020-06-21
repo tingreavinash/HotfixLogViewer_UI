@@ -1,7 +1,7 @@
 @ECHO OFF
 IF "%1"=="start" (
     ECHO Copying excel file
-    copy /Y "\\batfs1\ThirdLineSupport\ECPLog\ECPLog.xlsm" "C:\Work\Projects\Hotfix Viewer Spring\Executables\Excel File\"
+    copy /Y "<NETWORK_PATH>\ECPLog.xlsm" "C:\Work\Projects\Hotfix Viewer Spring\Executables\Excel File\"
     ECHO Stopping default mongoDB service
     net stop MongoDB
     ECHO start MongoDB Auth Service
@@ -11,6 +11,7 @@ IF "%1"=="start" (
     start "HFLogUI" java -jar "C:\Work\Projects\Hotfix Viewer Spring\Executables\HFLogUI.war"
     ECHO start HotfixViewerBackend
     start "HotfixViewerBackend" java -jar "C:\Work\Projects\Hotfix Viewer Spring\Executables\HotfixViewerBackend.jar"
+    REM "Redirect_Page_HFLogUI" Application is optional and it only redirects the requests on "http://localhost:4444/" to "http://localhost/"
     ECHO start Redirect_Page_HFLogUI
     start "Redirect_Page_HFLogUI" java -jar "C:\Work\Projects\Hotfix Viewer Spring\Executables\Redirect_Page_HFLogUI.war"
 ) ELSE IF "%1"=="stop" (
