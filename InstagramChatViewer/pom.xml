@@ -10,8 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.avinash</groupId>
-	<artifactId>HotfixLogUI</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>InstagramChatReader</artifactId>
 	<packaging>war</packaging>
 	<name>HotfixLogUI</name>
 	<description>UI for Hotfix Log Viewer</description>

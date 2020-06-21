@@ -1,10 +1,10 @@
-package com.avinash.HotfixLogUI;
+package com.avinash.InstagramChatReader;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HotfixLogUiApplicationTests {
+class InstagramChatApplicationApplicationTests {
 
 	@Test
 	void contextLoads() {
