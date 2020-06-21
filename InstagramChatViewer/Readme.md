@@ -1,10 +1,10 @@
 # Instagram Chat Reader
 
-## Description:
+## Description
 
 This application will read the ***messages.json*** file which you get in Instagram data backup and displays the conversation on webpage at given port.
 
-## How To Use:
+## How To Use
 
 1. Using ***application.yml*** file:
     - Specify the instagram user id for property `participant`
