@@ -1,3 +1,4 @@
+<%@page import="java.util.Base64"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Map"%>
@@ -23,14 +24,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 </head>
-<body ">
+<body >
 
 	<%
 	
 		if ("searchClicked".equals(request.getParameter("searchBtn"))) {
-			
-			InetAddress ip = InetAddress.getByName(request.getRemoteAddr());
-			String hostname = ip.getHostName();
+	
 
 			String[] arrVersions = request.getParameterValues("SelectedVersion");
 			List<String> selectedVersions = new ArrayList<String>();
@@ -134,12 +133,15 @@
 				ObjectMapper objectMapper = new ObjectMapper();
 				HttpURLConnection con = null;
 				try {
-
-					URL url = new URL("http://localhost:4569/HFLogViewer/getAllResults" + paramString);
+					
+					URL url = new URL("http://localhost:7777/HFLogViewer/getAllResults" + paramString);
 					con = (HttpURLConnection) url.openConnection();
 					con.setRequestMethod("GET");
 					con.setRequestProperty("Content-Type", "application/json");
-					con.setRequestProperty("Hostname", hostname);
+					con.setRequestProperty("Hostname", request.getAttribute("RemoteHost").toString());
+					con.setRequestProperty("HostAddress", request.getAttribute("HostAddress").toString());
+					con.setRequestProperty("NTNET", request.getAttribute("NTNET").toString());
+					
 					con.setRequestProperty("SearchIput", plainInput);
 					con.setConnectTimeout(5000);
 					con.setReadTimeout(5000);

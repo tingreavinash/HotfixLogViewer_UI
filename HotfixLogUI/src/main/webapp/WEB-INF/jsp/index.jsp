@@ -1,3 +1,4 @@
+<%@page import="java.util.Base64"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.net.InetAddress"%>
 <%@page import="java.util.List"%>
@@ -41,9 +42,73 @@ html, body {
 <div class="se-pre-con" id="se-pre-con"></div>
 	<%
 		InetAddress ip = InetAddress.getByName(request.getRemoteAddr());
-		String hostname = ip.getHostName();
-		System.out.println("User:\t" + hostname);
-		System.out.println("Time:\t" + new Date());
+		request.setAttribute("HostAddress", ip.getHostAddress());
+		
+		
+
+		try{
+			HttpSession session1 = request.getSession(true);
+		     String auth = request.getHeader("Authorization");
+		     
+		     if (auth == null) {
+		            response.setStatus(response.SC_UNAUTHORIZED);
+		            response.setHeader("WWW-Authenticate", "NTLM");
+		            response.flushBuffer();
+		            return;
+		      }
+		      if (auth.startsWith("NTLM ")) {
+
+		            byte[] msg = Base64.getDecoder().decode(auth.substring(5));
+		            int off = 0, length, offset;
+		            if (msg[8] == 1) {
+		                  byte z = 0;
+		                  byte[] msg1 = { (byte) 'N', (byte) 'T', (byte) 'L',
+		                              (byte) 'M', (byte) 'S', (byte) 'S', (byte) 'P', z,
+		                              (byte) 2, z, z, z, z, z, z, z, (byte) 40, z, z, z,
+		                              (byte) 1, (byte) 130, z, z, z, (byte) 2, (byte) 2,
+		                              (byte) 2, z, z, z, z, z, z, z, z, z, z, z, z };
+		                  response.setHeader("WWW-Authenticate", "NTLM "
+		                              + Base64.getEncoder().encodeToString(msg1));
+		                  response.sendError(response.SC_UNAUTHORIZED);
+		                  return;
+		            } else if (msg[8] == 3) {
+
+		                  off = 30;
+
+		                  length = msg[off + 17] * 256 + msg[off + 16];
+		                  offset = msg[off + 19] * 256 + msg[off + 18];
+		                  String remoteHost = new String(msg, offset, length);
+
+		                  length = msg[off + 9] * 256 + msg[off + 8];
+		                  offset = msg[off + 11] * 256 + msg[off + 10];
+		                  String username = new String(msg, offset, length);
+		                  
+		                  
+		                  StringBuffer sb = new StringBuffer();
+		                  for (int i = 0; i < username.length(); i += 2) {
+		                        sb.append(username.charAt(i));
+		                  }
+		                  String l_ntuser = new String(sb).toLowerCase();
+		                  System.out.println("Time:\t" + new Date());
+		                  System.out.println("User:\t"+l_ntuser);
+		                  request.setAttribute("NTNET", l_ntuser);
+		                  sb.delete(0, sb.length());
+		                  
+		                  for (int i = 0; i < remoteHost.length(); i += 2) {
+		                        sb.append(remoteHost.charAt(i));
+		                  }
+		                  String remotehost=new String(sb).toLowerCase();
+		                  
+		                  request.setAttribute("RemoteHost", remotehost);
+		                  sb.delete(0, sb.length());
+		                  
+		            }
+		    	 
+		      }
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 	%>
 
 	<div class="container-fluid h-100" id="container-fluid">
