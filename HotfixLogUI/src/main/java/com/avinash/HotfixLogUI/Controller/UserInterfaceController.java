@@ -20,12 +20,12 @@ public class UserInterfaceController {
 	
 	@RequestMapping(value="/HotfixLogUI", method=RequestMethod.GET)
 	public String loadIndexPage() {
-		return "index";
+		return "hotfixIndex";
 	}
 	
 	@RequestMapping(value="/HotfixLogUI", method=RequestMethod.POST)
 	public String loadResultPage() {
-		return "index";
+		return "hotfixIndex";
 	}
 	
 }

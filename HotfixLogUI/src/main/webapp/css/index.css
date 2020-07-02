@@ -6,6 +6,9 @@
 	font-size: medium;
 	
 }
+.custom-card{
+	min-height: 220px;
+}
 .circle-image{
  	width: 150px;
  	display: block;

@@ -193,7 +193,7 @@
 			<div class="row hf-list-top">
 				<div class="col col-sm-4">
 					<div id="ecpno_<%=ecp.get_id()%>" data-toggle="tooltip"
-						data-placement="bottom" title="Click to Copy"
+						data-placement="bottom" title="Copy to clipboard"
 						onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>')"><%=ecp.getEcpNo()%></div>
 					<%
 						if ("YES".equalsIgnoreCase(ecp.getEcpFaulty())) {
@@ -495,9 +495,9 @@
 
 			const myTextarea = document.createElement('textarea');
 
-			var copyString = 'Hotfix : '
+			var copyString = 'HF Number:\t\t'
 					+ document.getElementById(ecpNo).innerHTML
-					+ '\r\nDescription: '
+					+ '\r\nDescription:\t'
 					+ document.getElementById(description).innerHTML;
 
 			myTextarea.innerHTML = copyString;
