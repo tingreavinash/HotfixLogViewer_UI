@@ -134,13 +134,13 @@
 				HttpURLConnection con = null;
 				try {
 					
-					URL url = new URL("http://localhost:4569/HFLogViewer/getAllResults" + paramString);
+					URL url = new URL("http://avinasht01:4569/HFLogViewer/getAllResults" + paramString);
 					con = (HttpURLConnection) url.openConnection();
 					con.setRequestMethod("GET");
 					con.setRequestProperty("Content-Type", "application/json");
-					con.setRequestProperty("Hostname", request.getAttribute("RemoteHost").toString());
 					con.setRequestProperty("HostAddress", request.getAttribute("HostAddress").toString());
-					con.setRequestProperty("NTNET", request.getAttribute("NTNET").toString());
+					con.setRequestProperty("Hostname", request.getAttribute("RemoteHost").toString());
+					//con.setRequestProperty("NTNET", request.getAttribute("NTNET").toString());
 					
 					con.setRequestProperty("SearchIput", plainInput);
 					con.setConnectTimeout(5000);

@@ -42,23 +42,42 @@ html, body {
 <div class="se-pre-con" id="se-pre-con"></div>
 	<%
 		InetAddress ip = InetAddress.getByName(request.getRemoteAddr());
+	
 		request.setAttribute("HostAddress", ip.getHostAddress());
-		
-		
+        request.setAttribute("RemoteHost", ip.getHostName());
 
-		try{
-			HttpSession session1 = request.getSession(true);
+        System.out.println("\nHotfix Log Viewer");
+        System.out.println("Time:\t" + new Date());
+        System.out.println("IP:\t"+ip.getHostAddress().toString());
+		System.out.println("Host:\t"+ip.getHostName().toString());
+		
+		
+/*		try{
 		     String auth = request.getHeader("Authorization");
+		     System.out.println("Auth: "+auth);
 		     
 		     if (auth == null) {
 		            response.setStatus(response.SC_UNAUTHORIZED);
 		            response.setHeader("WWW-Authenticate", "NTLM");
 		            response.flushBuffer();
+		            System.out.println("Debug4");
 		            return;
 		      }
-		      if (auth.startsWith("NTLM ")) {
+		      if (!auth.startsWith("NTLM ")) {
+		    	  System.out.println("Debug5");
+		    	  System.out.println("No NTLM Header");
+		    	  return;
+		      }
+		      
+		      if (auth.startsWith("NTLM ")){
+		    	  System.out.println("Debug6");
 
 		            byte[] msg = Base64.getDecoder().decode(auth.substring(5));
+		            StringBuilder sb_test = new StringBuilder();
+		            for (int i=0;i<msg.length; i++){
+		            	sb_test.append(i+"="+msg[i]+", ");
+		            }
+		            //System.out.println("Test msg: "+sb_test.toString());
 		            int off = 0, length, offset;
 		            if (msg[8] == 1) {
 		                  byte z = 0;
@@ -70,9 +89,10 @@ html, body {
 		                  response.setHeader("WWW-Authenticate", "NTLM "
 		                              + Base64.getEncoder().encodeToString(msg1));
 		                  response.sendError(response.SC_UNAUTHORIZED);
+		                  System.out.println("Debug7");
 		                  return;
 		            } else if (msg[8] == 3) {
-
+		            	System.out.println("Debug8");
 		                  off = 30;
 
 		                  length = msg[off + 17] * 256 + msg[off + 16];
@@ -101,14 +121,16 @@ html, body {
 		                  
 		                  request.setAttribute("RemoteHost", remotehost);
 		                  sb.delete(0, sb.length());
-		                  
+		            }else{
+		            	System.out.println("Else condition");
+		            	return;
 		            }
 		    	 
 		      }
 		}catch(Exception e){
-			e.printStackTrace();
+			e.getMessage();
 		}
-		
+*/		
 	%>
 
 	<div class="container-fluid h-100" id="container-fluid">
@@ -893,7 +915,7 @@ html, body {
 
 				<div
 					style="opacity: 0.8; position: fixed; bottom: 10px; right: 60px; z-index: 6;">
-					<button class="btn btn-warning text-white" data-toggle="modal"
+					<button class="btn btn-warning text-dark" data-toggle="modal"
 						data-target="#guideline_modal">
 						<i class="fas fa-info-circle"></i>
 					</button>
@@ -942,14 +964,14 @@ html, body {
 
 				<div
 					style="opacity: 0.8; position: fixed; bottom: 10px; right: 10px; z-index: 6;">
-					<button class="btn btn-warning text-white" type="submit"
+					<button class="btn btn-warning text-dark" type="submit"
 						name="profileBtn" value="profileClicked" data-toggle="modal"
 						data-target="#info_modal">
 						<i class="fas fa-paper-plane"></i>
 					</button>
 				</div>
 
-				<!-- Modal -->
+										<!-- Modal -->
 				<div class="modal fade text-center" id="info_modal" tabindex="-1"
 					role="dialog" aria-labelledby="custom_modal_title"
 					aria-hidden="true">
@@ -966,11 +988,33 @@ html, body {
 									<b>Avinash Tingre</b>
 								</h4>
 								Software Support Engineer<br>with 2.5+ years of experience<br>
-								<em>(OSS RM & Planning)</em><br>
+								
+								<div class="row align-items-center justify-content-center" style="margin-top: 20px;">
+								
+								
+								<div class="col col-sm-4">
+									<div class="btn-group" role="group" aria-label="Basic example">
+  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
+  										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a mail</a>
+									</div>
+								</div>
+
+								<div class="col col-sm-4">
+									<div class="btn-group" role="group" aria-label="Basic example">
+  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comments"></i></button>
+  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Chat with me</a>
+									</div>
+								</div>
+								
+	
+						
+								
+								</div>		
+
 							</div>
 							<div class="modal-footer">
 								<button type="button"
-									class="btn btn-sm btn-custom-bg text-white"
+									class="btn btn-secondary btn-sm"
 									data-dismiss="modal" id="result_close_btn">Close</button>
 
 							</div>
