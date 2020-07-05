@@ -11,6 +11,17 @@ html {
 	text-decoration:underline;
 	color:inherit;
 }
+.btn-outline-white-custom{
+	color: #fff;
+    border-color: #fff;    
+}
+
+.btn-outline-white-custom:hover{
+	color: #343a40;
+    background-color: #fff;
+    border-color: #fff;
+}
+
 .profile-btn{
 	color:white;
 	opacity:0.8;
@@ -33,10 +44,18 @@ background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
 .card{
-	opacity: 0.9;
+	opacity: 0.7;
+}
+.card-body{
+	background-color:rgba(12, 14, 21, 0.91);
 }
 
 
+.card-btn-custom{
+	bottom: 20px;
+    position: absolute;
+    right: 35%;
+}
 
 #stars {
   width: 1px;
