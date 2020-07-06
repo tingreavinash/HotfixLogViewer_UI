@@ -24,10 +24,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 </head>
-<body >
+<body>
 
 	<%
-	
+		String show_input = "";
 		if ("searchClicked".equals(request.getParameter("searchBtn"))) {
 	
 
@@ -86,6 +86,7 @@
 			String filesReleasedToCustomer = request.getParameter("filesReleasedToCustomer").trim();
 			String specificFunc = request.getParameter("specificFunc").trim();
 
+			
 			if (!"".equals(description) || !"".equals(ecpNo) || !"".equals(latestHF) || !"".equals(requestor) || !"".equals(fixedBy)
 					|| !"".equals(caseOrCrNo) || !"".equals(filesModifiedInPerforce)
 					|| !"".equals(filesReleasedToCustomer) || !"".equals(specificFunc)
@@ -130,6 +131,19 @@
 						+ "&requestor=" + requestor + "&fixedBy=" + fixedBy + "&module=" + modules + "&caseOrCrNo="
 						+ caseOrCrNo + "&filesModifiedInPerforce=" + filesModifiedInPerforce
 						+ "&filesReleasedToCustomer=" + filesReleasedToCustomer + "&specificFunc=" + specificFunc;
+		
+				if(ecpNo!="") show_input=show_input.concat("<b><em>Hotfix No:</em></b> "+ecpNo+", ");
+				if(latestHF !="") show_input=show_input.concat("<b><em>Latest Hotfix:</em></b> "+latestHF+", ");
+				if(description !="") show_input=show_input.concat("<b><em>Description:</em></b> "+description+", ");
+				if(versions.length() >0) show_input=show_input.concat("<b><em>Versions:</em></b> "+versions+", ");
+				if(requestor !="") show_input=show_input.concat("<b><em>Requested by:</em></b> "+requestor+", ");
+				if(fixedBy !="") show_input=show_input.concat("<b><em>Fixed by:</em></b> "+fixedBy+", ");
+				if(modules.length() > 0) show_input=show_input.concat("<b><em>Modules:</em></b> "+modules+", ");
+				if(caseOrCrNo !="") show_input=show_input.concat("<b><em>Case or CR No:</em></b> "+caseOrCrNo+", ");
+				if(filesModifiedInPerforce !="") show_input=show_input.concat("<b><em>Files modified:</em></b> "+filesModifiedInPerforce+", ");
+				if(filesReleasedToCustomer !="") show_input=show_input.concat("<b><em>Files released:</em></b> "+filesReleasedToCustomer+", ");
+				if(specificFunc !="") show_input=show_input.concat("<b><em>Specific function:</em></b> "+specificFunc+", ");
+				
 				ObjectMapper objectMapper = new ObjectMapper();
 				HttpURLConnection con = null;
 				try {
@@ -174,13 +188,18 @@
 						System.out.println("Results found: " + respObject.getCount());
 						if (respObject.getCount() > 0) {
 	%>
-	<div class="alert alert-success text-center" role="alert">
-		<h6 class="alert-heading">
-			Results found:
-			<b><%=respObject.getCount()%></b></h6>
-
+	<div class="alert Box-header--blue  text-center" role="alert">
+		Results found:
+			<span class="badge badge-secondary"><%=respObject.getCount()%></span>
+	
 	</div>
-	<div class="list-group " id="hflist">
+	<div class="alert Box-header">
+	<span style="font-size: 13px;color:white" class="badge badge-warning badge-mb">Search Query: </span> <%=show_input %></div>
+	<div class="list-group " id="hflist" style="margin-top:10px;">
+		<div class="row Box-hotfix-title">
+		<div class="col col-sm-3 text-center">Hotfix Number</div>
+		<div class="col col-sm-9 text-center">Description</div>
+		</div>
 		<%
 			for (int count = 0; count < respObject.getCount(); count++) {
 				ECPLog ecp = new ECPLog();
@@ -191,7 +210,7 @@
 			data-toggle="collapse" href="#hfCollapse<%=ecp.get_id()%>"
 			aria-expanded="false" aria-controls="hfCollapse<%=ecp.get_id()%>">
 			<div class="row hf-list-top">
-				<div class="col col-sm-4">
+				<div class="col col-sm-3">
 					<div id="ecpno_<%=ecp.get_id()%>" data-toggle="tooltip"
 						data-placement="bottom" title="Copy to clipboard"
 						onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>')"><%=ecp.getEcpNo()%></div>
@@ -212,8 +231,7 @@
 
 
 				</div>
-				<div class="col col-sm-8">
-					<small><b>Description:</b></small><br>
+				<div class="col col-sm-9 hf-list-description">
 					<div id="description_<%=ecp.get_id()%>"><%=ecp.getDescription()%></div>
 				</div>
 			</div>

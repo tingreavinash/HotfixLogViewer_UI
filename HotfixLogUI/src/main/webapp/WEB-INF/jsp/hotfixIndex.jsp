@@ -153,18 +153,18 @@ html, body {
 							<!-- Card for Selecting Release -->
 							<div class="card" style="max-height: 270px;">
 
-								<div class="card-header">
+								<div class="filter-header bg-transparent">
 								<div class="input-group input-group-sm">
 								<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+											<span class="input-group-text" id="basic-addon1"><i class="fas fa-filter"></i></span>
 										</div>
 									<input type="text" class="form-control form-control-sm"
-										id="inputVersion" placeholder="Find Version"
+										id="inputVersion" placeholder="Filter Version"
 										onkeyup="filterVersions()">
 								</div>
 								</div>
 
-								<div class="cust-padding card-body" style="overflow-y: scroll;"
+								<div class="cust-padding card-body custom-scrollbar-css" style="overflow-y: scroll;"
 									id="versionList">
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
@@ -351,18 +351,18 @@ html, body {
 							<!-- Card for Selecting Module  -->
 							<div class="card" style="max-height: 270px;">
 
-								<div class="card-header">
+								<div class="filter-header bg-transparent">
 									<div class="input-group input-group-sm">
 										<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+											<span class="input-group-text" id="basic-addon1"><i class="fas fa-filter"></i></span>
 										</div>
 										<input type="text" class="form-control form-control-sm"
-											id="inputModule" placeholder="Find Module"
+											id="inputModule" placeholder="Filter Module"
 											onkeyup="filterModules()">
 									</div>
 								</div>
 
-								<div class="cust-padding card-body" style="overflow-y: scroll;"
+								<div class="cust-padding card-body custom-scrollbar-css" style="overflow-y: scroll;"
 									id="moduleList">
 
 									<div class="custom-control custom-checkbox">
@@ -869,9 +869,11 @@ html, body {
 
 
 
-
+					<div class="row justify-content-center">
 					<button type="submit" id="searchBtn" name="searchBtn"
-						value="searchClicked" class="btn btn-primary btn-block">Search</button>
+						value="searchClicked" class="btn btn-outline-danger"><i class="fas fa-search"></i>
+						</button>
+						</div>
 				</form>
 
 
@@ -915,7 +917,7 @@ html, body {
 
 				<div
 					style="opacity: 0.8; position: fixed; bottom: 10px; right: 60px; z-index: 6;">
-					<button class="btn btn-warning text-dark" data-toggle="modal"
+					<button class="btn btn-warning text-white " data-toggle="modal"
 						data-target="#guideline_modal">
 						<i class="fas fa-info-circle"></i>
 					</button>
@@ -964,7 +966,7 @@ html, body {
 
 				<div
 					style="opacity: 0.8; position: fixed; bottom: 10px; right: 10px; z-index: 6;">
-					<button class="btn btn-warning text-dark" type="submit"
+					<button class="btn btn-warning text-white" type="submit"
 						name="profileBtn" value="profileClicked" data-toggle="modal"
 						data-target="#info_modal">
 						<i class="fas fa-paper-plane"></i>
@@ -992,17 +994,17 @@ html, body {
 								<div class="row align-items-center justify-content-center" style="margin-top: 20px;">
 								
 								
-								<div class="col col-sm-4">
+								<div class="col col-sm-5">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
   										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a mail</a>
 									</div>
 								</div>
 
-								<div class="col col-sm-4">
+								<div class="col col-sm-5">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comments"></i></button>
-  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Chat with me</a>
+  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Ping me on Skype</a>
 									</div>
 								</div>
 								

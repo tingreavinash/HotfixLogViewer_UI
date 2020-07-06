@@ -54,19 +54,15 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 						align="center">PROJECTS REPOSITORY</h1>
 	</div>
 	
-	<!-- Stars Theme  -->
-<div id='stars'></div>
-<div id='stars2'></div>
-<div id='stars3'></div>	
-	<!-- Stars Theme  -->
+
 	
 	
-		<div class="row align-items-center justify-content-center" >
+		<div class="row align-items-center justify-content-center" style="margin-top:20px" >
 		
 		<div class="col-sm-4 ">
     <div class="card text-center custom-card">
     <div class="card-header"><span style="color:#7952b3"><i class="fas fa-search"></i></span> Hotfix Log Viewer</div>
-      <div class="card-body text-white">
+      <div class="card-body ">
         <p class="card-text">Application for searching the hotfix details.</p>
 
 		<a href="http://avinasht01/HotfixLogUI" target="_blank" class="btn btn-outline-white-custom btn-sm card-btn-custom">Visit Application<i class="fas fa-external-link-square-alt ml-2"></i></a>        
@@ -78,7 +74,7 @@ System.out.println("Host:\t"+ip.getHostName().toString());
   <div class="col-sm-4">
     <div class="card  text-center custom-card">
     <div class="card-header"><span class="text-primary"><i class="fas fa-file-code"></i></span> Hotfix Log Viewer - Swagger UI</div>
-      <div class="card-body text-white">
+      <div class="card-body ">
         <p class="card-text">OpenAPI documentation for Hotfix Log Viewer application.</p>
 		<a href="http://avinasht01:4569/swagger-ui.html" target="_blank" class="btn btn-outline-white-custom btn-sm card-btn-custom">Visit Application<i class="fas fa-external-link-square-alt ml-2"></i></a>        
       </div>
@@ -93,7 +89,7 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 		<div class="col-sm-4 ">
     <div class="card text-center custom-card">
     <div class="card-header"><span class="text-success"><i class="fas fa-cloud-download-alt"></i></span> Hotfix Download Utility</div>
-      <div class="card-body text-white ">
+      <div class="card-body  ">
         <p class="card-text">Application for downloading hotfixes.</p>
       	<a href="http://avinasht01:4568/HFDownload/" target="_blank" class="btn btn-outline-white-custom btn-sm card-btn-custom">Visit Application<i class="fas fa-external-link-square-alt ml-2"></i></a>        
       </div>
@@ -103,7 +99,7 @@ System.out.println("Host:\t"+ip.getHostName().toString());
   <div class="col-sm-4">
     <div class="card  text-center custom-card">
     <div class="card-header"><span class="text-danger"><i class="fas fa-mug-hot"></i></span> Leave Management System</div>
-      <div class="card-body text-white">
+      <div class="card-body ">
         <p class="card-text">Leave management application for ARM L2.</p>
       	<a href="http://avinasht01:4568/LMS/" target="_blank" class="btn btn-outline-white-custom btn-sm card-btn-custom">Visit Application<i class="fas fa-external-link-square-alt ml-2"></i></a>
         
@@ -114,7 +110,7 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 		</div>
 
 		<div class="row align-items-center justify-content-center" style="margin-top: 20px;">		
-		<h6 class="text-light small font-weight-bold "><i class="fas fa-code"></i> with <i class="fas fa-heart" style="color:red;"></i> by 
+		<h6 class="text-light small font-weight-bold "><i class="fas fa-code"></i> with <i class="fas fa-heart" ></i> by 
 		<a href="sip:avinash.tingre@amdocs.com" class="name-anchor" >Avinash Tingre</a></h6>
 		</div>
 		
@@ -123,9 +119,9 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 	</div>
 	
 	
-	<div style="position: fixed; bottom: 10px; right: 20px; z-index: 6;">
-					<h4><span class="profile-btn text-warning" data-toggle="modal" data-target="#info_modal">
-					<i class="fas fa-paper-plane"></i></span></h4>
+	<div style="position: fixed; bottom: 20px; right: 20px; z-index: 6;">
+					<h5 style="margin:0px;"><span class="profile-btn " data-toggle="modal" data-target="#info_modal">
+					<i class="fas fa-paper-plane"></i></span></h5>
 				
 					
 					
@@ -172,17 +168,17 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 								<div class="row align-items-center justify-content-center" style="margin-top: 20px;">
 								
 								
-								<div class="col col-sm-4">
+								<div class="col col-sm-5">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
   										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a mail</a>
 									</div>
 								</div>
 
-								<div class="col col-sm-4">
+								<div class="col col-sm-5">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comments"></i></button>
-  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Chat with me</a>
+  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Ping me on Skype</a>
 									</div>
 								</div>
 								
