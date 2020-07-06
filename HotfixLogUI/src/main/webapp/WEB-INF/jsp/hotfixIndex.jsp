@@ -899,8 +899,8 @@ html, body {
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div id="copyToastBody" class="toast-body">Hotfix details
-							copied.</div>
+						<div id="copyToastBody" class="toast-body">Hotfix Details
+							Copied.</div>
 					</div>
 				</div>
 				<!-- 	<img alt="Test image" src="image/search_graphic.png"> -->

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
+.hf-details-parent{
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	margin-top:-4px;
+}
 .filter-header{
 	padding: 5px;
 	border-bottom: 1px solid #dfdfdf;

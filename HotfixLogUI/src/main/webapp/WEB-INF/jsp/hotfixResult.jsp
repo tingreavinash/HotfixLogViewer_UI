@@ -528,7 +528,7 @@
 
 			document.body.removeChild(myTextarea);
 			document.getElementById('copyToastWrapper').style.display="block";
-			document.getElementById('copyToastBody').innerHTML =document.getElementById(ecpNo).innerHTML;
+			document.getElementById('copyToastBody').innerHTML =document.getElementById(ecpNo).innerHTML+'<br>(Hotfix number and description)';
 			
 			$('#copyToast').toast('show');
 
