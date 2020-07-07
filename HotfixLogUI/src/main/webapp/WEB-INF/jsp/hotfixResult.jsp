@@ -1,3 +1,4 @@
+<%@page import="java.util.Locale"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -190,7 +191,7 @@
 	%>
 	<div class="alert Box-header--blue  text-center" role="alert">
 		Results found:
-			<span class="badge badge-secondary"><%=respObject.getCount()%></span>
+			<span class="badge badge-pill badge-secondary"><%=respObject.getCount()%></span>
 	
 	</div>
 	<div class="alert Box-header text-center">
@@ -257,7 +258,7 @@
 					<div class="row">
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Prereq's for latest HF</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Prereq's for Latest Hotfix</span><br>
 								<textarea class="form-control" aria-label="With textarea"
 									disabled><%=ecp.getPrereqForLatestEcp()%>
                         </textarea>
@@ -266,7 +267,7 @@
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Latest HF</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Latest Hotfix</span><br>
 								<%=ecp.getLatestEcp()%>
 							</div>
 						</div>
@@ -275,7 +276,7 @@
 
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Case/CR No.</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Case/CR No.</span><br>
 								<%=ecp.getCaseOrCrNo()%>
 							</div>
 
@@ -287,7 +288,7 @@
 					<div class="row">
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Version</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Version</span><br>
 								<%=ecp.getCramerVersion()%>
 							</div>
 
@@ -295,14 +296,14 @@
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Rolled into version</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Rolled into Version</span><br>
 								<%=ecp.getRolledIntoVersion()%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Rollup CR</span> <br><%=ecp.getRollupCr()%>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Roll-up CR</span> <br><%=ecp.getRollupCr()%>
 							</div>
 
 						</div>
@@ -312,21 +313,21 @@
 					<div class="row">
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Module</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Module</span><br>
 								<%=ecp.getModule()%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Is mandatory ?</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Is Mandatory ?</span><br>
 								<%=ecp.getMandatoryEcp()%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Status</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Status</span><br>
 								<%=ecp.getStatus()%>
 							</div>
 
@@ -337,21 +338,21 @@
 					<div class="row">
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Specific function</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Specific Function</span><br>
 								<%=ecp.getSpecificFunc()%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Severity</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Severity</span><br>
 								<%=ecp.getSeverity()%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Priority</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Priority</span><br>
 								<%=ecp.getPriority()%>
 							</div>
 
@@ -362,21 +363,21 @@
 					<div class="row">
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Requested by</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Requested By</span><br>
 								<%=ecp.getRequestor()%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Fixed by</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Fixed By</span><br>
 								<%=ecp.getFixedBy()%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Notes</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Notes</span><br>
 								<textarea class="form-control" aria-label="With textarea"
 									disabled><%=ecp.getNotes()%>
                         </textarea>
@@ -389,21 +390,45 @@
 					<div class="row">
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Requested on</span><br>
-								<%=ecp.getRequestDate()%>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Requested Date</span><br>
+								<%
+								String requestDateString="-";
+								try{
+								    Date date=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).parse(ecp.getRequestDate());
+								    SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEEE, d MMM yyyy");
+								    requestDateString=dateFormatter.format(date);
+								    
+								}catch(Exception ex){
+									ex.printStackTrace();
+								}
+								%>
+								
+								<%=requestDateString%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Released on</span><br>
-								<%=ecp.getReleasedDate()%>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Released Date</span><br>
+								<%
+								String releasedDateString="-";
+								try{
+									Date date=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).parse(ecp.getReleasedDate());
+								    SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEEE, d MMM yyyy");
+								    releasedDateString=dateFormatter.format(date);
+
+								    
+								}catch(Exception ex){
+									ex.printStackTrace();
+								}
+								%>
+								<%=releasedDateString%>
 							</div>
 
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Additional info</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Additional Info</span><br>
 								<textarea class="form-control" aria-label="With textarea"
 									disabled><%=ecp.getAdditionalInfo()%>
                         </textarea>
@@ -416,7 +441,7 @@
 					<div class="row">
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Files modified</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Files Modified</span><br>
 								<textarea class="form-control" aria-label="With textarea"
 									disabled><%=ecp.getFilesModifiedInPerforce()%>
                         </textarea>
@@ -425,7 +450,7 @@
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Files location</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag">Files Location</span><br>
 								<textarea class="form-control" aria-label="With textarea"
 									disabled><%=ecp.getFileLocationInPerforce()%>
                         </textarea>
@@ -433,7 +458,7 @@
 						</div>
 						<div class="col">
 							<div>
-								<span class="badge badge-secondary">Files released</span><br>
+								<span class="badge badge-pill badge-secondary hf-detail-tag" >Files Released</span><br>
 								<textarea class="form-control"  aria-label="With textarea"
 									disabled><%=ecp.getFilesReleasedToCustomer()%>
                             </textarea>
