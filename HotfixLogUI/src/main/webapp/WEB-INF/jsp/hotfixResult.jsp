@@ -198,8 +198,8 @@
 	</div>
 	<div class="list-group " id="hflist" style="margin-top:10px;">
 		<div class="row Box-hotfix-title">
-		<div class="col col-sm-3 text-center">Hotfix Number</div>
-		<div class="col col-sm-9 text-center">Description</div>
+		<div class="col col-sm-3 text-center "><b>HOTFIX NUMBER</b></div>
+		<div class="col col-sm-9 text-center"><b>DESCRIPTION</b></div>
 		</div>
 		<%
 			for (int count = 0; count < respObject.getCount(); count++) {
@@ -211,7 +211,7 @@
 			data-toggle="collapse" href="#hfCollapse<%=ecp.get_id()%>"
 			aria-expanded="false" aria-controls="hfCollapse<%=ecp.get_id()%>">
 			<div class="row hf-list-top">
-				<div class="col col-sm-3">
+				<div class="col col-sm-3 ">
 					<div id="ecpno_<%=ecp.get_id()%>" data-toggle="tooltip"
 						data-placement="bottom" title="Copy to clipboard"
 						onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>')"><%=ecp.getEcpNo()%></div>

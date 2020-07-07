@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
-
+.hf-result-border{
+	border-right: 1px solid #dfdfdf;
+	
+}
 
 .hf-details-parent{
 	border-bottom-left-radius: 6px;
