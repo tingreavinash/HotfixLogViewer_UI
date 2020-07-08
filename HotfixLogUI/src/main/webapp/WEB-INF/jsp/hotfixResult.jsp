@@ -207,15 +207,26 @@
 				ECPLog ecp = new ECPLog();
 				ecp = respObject.getRecords().get(count);
 		%>
-
+		<div id="ecp_image_<%=ecp.get_id()%>">
 		<a class="list-group-item list-group-item-action hf-details-parent"
 			data-toggle="collapse" href="#hfCollapse<%=ecp.get_id()%>"
 			aria-expanded="false" aria-controls="hfCollapse<%=ecp.get_id()%>">
 			<div class="row hf-list-top">
 				<div class="col col-sm-3 ">
-					<div id="ecpno_<%=ecp.get_id()%>" data-toggle="tooltip"
+					
+					<div class="row">
+					<div class="col col-sm-10">
+					<div id="ecpno_<%=ecp.get_id()%>"><%=ecp.getEcpNo()%>
+						</div>
+					
+					</div>
+					<div class="col col-sm-2">
+					<span class="copy_icon" data-toggle="tooltip" data-animation="true"
 						data-placement="bottom" title="Copy to clipboard"
-						onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>')"><%=ecp.getEcpNo()%></div>
+					onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>')"><i class="fas fa-copy"></i></span>
+					
+					</div>
+					</div>
 					<%
 						if ("YES".equalsIgnoreCase(ecp.getEcpFaulty())) {
 					%>
@@ -224,7 +235,7 @@
 						}
 												if ("TRUE".equalsIgnoreCase(ecp.getIsThisLatestHF())) {
 					%>
-					<span class="badge badge-success badge-pill">LATEST</span>
+					<span class="badge badge-success badge-pill" >LATEST</span>
 					<%
 						}
 					%>
@@ -241,7 +252,7 @@
 		</a>
 
 
-		<div class="collapse multi-collapse hf-details-child"
+		<div class="collapse multi-collapse hf-details-child" style="background-color: white"
 			data-parent="#hflist" id="hfCollapse<%=ecp.get_id()%>">
 			<%
 				if ("TRUE".equals(ecp.getIsThisLatestHF())) {
@@ -254,6 +265,12 @@
 					<%
 						}
 					%>
+					<div class="row justify-content-end">
+					<button class="btn btn-warning btn-sm" onclick="saveImage('ecp_image_<%=ecp.get_id()%>', '<%=ecp.getEcpNo()%>')">
+					Save <i class="fas fa-download"></i>
+					</button>
+					</div>
+					
 					<!-- Row 1 -->
 					<div class="row">
 						<div class="col">
@@ -473,7 +490,7 @@
 						<div class="col"></div>
 						<div class="col"></div>
 					</div>
-				</div>
+				</div></div>
 
 
 			</div>
@@ -560,7 +577,18 @@
 
 
 		}
+		function saveImage(elementId,ecpNumber) {
+
+			domtoimage.toBlob(document.getElementById(elementId))
+		    .then(function (blob) {
+			    console.log('Entered in file save.'+elementId);
+		        window.saveAs(blob, 'HF_Details_'+ecpNumber+'.png');
+		    });
+
+		}
+
 		
 	</script>
+	
 </body>
 </html>

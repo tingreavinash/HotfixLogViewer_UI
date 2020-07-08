@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+.copy_icon{
+	opacity:0.3;
+}
+.copy_icon:hover{
+	opacity:1;
+}
+
 .hf-result-border{
 	border-right: 1px solid #dfdfdf;
 	

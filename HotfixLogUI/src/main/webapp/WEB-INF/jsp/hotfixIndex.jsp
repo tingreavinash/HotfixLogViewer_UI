@@ -39,104 +39,103 @@ html, body {
 
 </head>
 <body class="custom-body" style="margin: 0;">
-<div class="se-pre-con" id="se-pre-con"></div>
+	<div class="se-pre-con" id="se-pre-con"></div>
 	<%
 		InetAddress ip = InetAddress.getByName(request.getRemoteAddr());
-	
+
 		request.setAttribute("HostAddress", ip.getHostAddress());
-        request.setAttribute("RemoteHost", ip.getHostName());
+		request.setAttribute("RemoteHost", ip.getHostName());
 
-        System.out.println("\nHotfix Log Viewer");
-        System.out.println("Time:\t" + new Date());
-        System.out.println("IP:\t"+ip.getHostAddress().toString());
-		System.out.println("Host:\t"+ip.getHostName().toString());
+		System.out.println("\nHotfix Log Viewer");
+		System.out.println("Time:\t" + new Date());
+		System.out.println("IP:\t" + ip.getHostAddress().toString());
+		System.out.println("Host:\t" + ip.getHostName().toString());
+
+		/*		try{
+		 String auth = request.getHeader("Authorization");
+		 System.out.println("Auth: "+auth);
+		 
+		 if (auth == null) {
+		    response.setStatus(response.SC_UNAUTHORIZED);
+		    response.setHeader("WWW-Authenticate", "NTLM");
+		    response.flushBuffer();
+		    System.out.println("Debug4");
+		    return;
+		  }
+		  if (!auth.startsWith("NTLM ")) {
+			  System.out.println("Debug5");
+			  System.out.println("No NTLM Header");
+			  return;
+		  }
+		  
+		  if (auth.startsWith("NTLM ")){
+			  System.out.println("Debug6");
 		
+		    byte[] msg = Base64.getDecoder().decode(auth.substring(5));
+		    StringBuilder sb_test = new StringBuilder();
+		    for (int i=0;i<msg.length; i++){
+		    	sb_test.append(i+"="+msg[i]+", ");
+		    }
+		    //System.out.println("Test msg: "+sb_test.toString());
+		    int off = 0, length, offset;
+		    if (msg[8] == 1) {
+		          byte z = 0;
+		          byte[] msg1 = { (byte) 'N', (byte) 'T', (byte) 'L',
+		                      (byte) 'M', (byte) 'S', (byte) 'S', (byte) 'P', z,
+		                      (byte) 2, z, z, z, z, z, z, z, (byte) 40, z, z, z,
+		                      (byte) 1, (byte) 130, z, z, z, (byte) 2, (byte) 2,
+		                      (byte) 2, z, z, z, z, z, z, z, z, z, z, z, z };
+		          response.setHeader("WWW-Authenticate", "NTLM "
+		                      + Base64.getEncoder().encodeToString(msg1));
+		          response.sendError(response.SC_UNAUTHORIZED);
+		          System.out.println("Debug7");
+		          return;
+		    } else if (msg[8] == 3) {
+		    	System.out.println("Debug8");
+		          off = 30;
 		
-/*		try{
-		     String auth = request.getHeader("Authorization");
-		     System.out.println("Auth: "+auth);
-		     
-		     if (auth == null) {
-		            response.setStatus(response.SC_UNAUTHORIZED);
-		            response.setHeader("WWW-Authenticate", "NTLM");
-		            response.flushBuffer();
-		            System.out.println("Debug4");
-		            return;
-		      }
-		      if (!auth.startsWith("NTLM ")) {
-		    	  System.out.println("Debug5");
-		    	  System.out.println("No NTLM Header");
-		    	  return;
-		      }
-		      
-		      if (auth.startsWith("NTLM ")){
-		    	  System.out.println("Debug6");
-
-		            byte[] msg = Base64.getDecoder().decode(auth.substring(5));
-		            StringBuilder sb_test = new StringBuilder();
-		            for (int i=0;i<msg.length; i++){
-		            	sb_test.append(i+"="+msg[i]+", ");
-		            }
-		            //System.out.println("Test msg: "+sb_test.toString());
-		            int off = 0, length, offset;
-		            if (msg[8] == 1) {
-		                  byte z = 0;
-		                  byte[] msg1 = { (byte) 'N', (byte) 'T', (byte) 'L',
-		                              (byte) 'M', (byte) 'S', (byte) 'S', (byte) 'P', z,
-		                              (byte) 2, z, z, z, z, z, z, z, (byte) 40, z, z, z,
-		                              (byte) 1, (byte) 130, z, z, z, (byte) 2, (byte) 2,
-		                              (byte) 2, z, z, z, z, z, z, z, z, z, z, z, z };
-		                  response.setHeader("WWW-Authenticate", "NTLM "
-		                              + Base64.getEncoder().encodeToString(msg1));
-		                  response.sendError(response.SC_UNAUTHORIZED);
-		                  System.out.println("Debug7");
-		                  return;
-		            } else if (msg[8] == 3) {
-		            	System.out.println("Debug8");
-		                  off = 30;
-
-		                  length = msg[off + 17] * 256 + msg[off + 16];
-		                  offset = msg[off + 19] * 256 + msg[off + 18];
-		                  String remoteHost = new String(msg, offset, length);
-
-		                  length = msg[off + 9] * 256 + msg[off + 8];
-		                  offset = msg[off + 11] * 256 + msg[off + 10];
-		                  String username = new String(msg, offset, length);
-		                  
-		                  
-		                  StringBuffer sb = new StringBuffer();
-		                  for (int i = 0; i < username.length(); i += 2) {
-		                        sb.append(username.charAt(i));
-		                  }
-		                  String l_ntuser = new String(sb).toLowerCase();
-		                  System.out.println("Time:\t" + new Date());
-		                  System.out.println("User:\t"+l_ntuser);
-		                  request.setAttribute("NTNET", l_ntuser);
-		                  sb.delete(0, sb.length());
-		                  
-		                  for (int i = 0; i < remoteHost.length(); i += 2) {
-		                        sb.append(remoteHost.charAt(i));
-		                  }
-		                  String remotehost=new String(sb).toLowerCase();
-		                  
-		                  request.setAttribute("RemoteHost", remotehost);
-		                  sb.delete(0, sb.length());
-		            }else{
-		            	System.out.println("Else condition");
-		            	return;
-		            }
-		    	 
-		      }
-		}catch(Exception e){
-			e.getMessage();
-		}
-*/		
+		          length = msg[off + 17] * 256 + msg[off + 16];
+		          offset = msg[off + 19] * 256 + msg[off + 18];
+		          String remoteHost = new String(msg, offset, length);
+		
+		          length = msg[off + 9] * 256 + msg[off + 8];
+		          offset = msg[off + 11] * 256 + msg[off + 10];
+		          String username = new String(msg, offset, length);
+		          
+		          
+		          StringBuffer sb = new StringBuffer();
+		          for (int i = 0; i < username.length(); i += 2) {
+		                sb.append(username.charAt(i));
+		          }
+		          String l_ntuser = new String(sb).toLowerCase();
+		          System.out.println("Time:\t" + new Date());
+		          System.out.println("User:\t"+l_ntuser);
+		          request.setAttribute("NTNET", l_ntuser);
+		          sb.delete(0, sb.length());
+		          
+		          for (int i = 0; i < remoteHost.length(); i += 2) {
+		                sb.append(remoteHost.charAt(i));
+		          }
+		          String remotehost=new String(sb).toLowerCase();
+		          
+		          request.setAttribute("RemoteHost", remotehost);
+		          sb.delete(0, sb.length());
+		    }else{
+		    	System.out.println("Else condition");
+		    	return;
+		    }
+			 
+		  }
+				}catch(Exception e){
+					e.getMessage();
+				}
+		*/
 	%>
 
 	<div class="container-fluid h-100" id="container-fluid">
 
 		<div class="row h-100">
-		
+
 			<div class="col-md-4 search-panel">
 				<div class="row justify-content-center"
 					style="background-color: #7952b3">
@@ -154,18 +153,29 @@ html, body {
 							<div class="card" style="max-height: 270px;">
 
 								<div class="filter-header bg-transparent">
-								<div class="input-group input-group-sm">
-								<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1"><i class="fas fa-filter"></i></span>
+									<div class="input-group input-group-sm">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1"><i
+												class="fas fa-filter"></i></span>
 										</div>
-									<input type="text" class="form-control form-control-sm"
-										id="inputVersion" placeholder="Filter Version"
-										onkeyup="filterVersions()">
-								</div>
+										<input type="text" class="form-control form-control-sm"
+											id="inputVersion" placeholder="Filter Version"
+											onkeyup="filterVersions()">
+									</div>
+									
+									<div class="row justify-content-center"
+										style="margin-top: 2px;	">
+										<span type="button" class="badge badge-secondary badge-sm"
+											onclick="sortListDir('versionList')">
+											Sort <i class="fas fa-sort"></i>
+										</span>
+
+									</div>
+									
 								</div>
 
-								<div class="cust-padding card-body custom-scrollbar-css" style="overflow-y: scroll;"
-									id="versionList">
+								<div class="cust-padding card-body custom-scrollbar-css"
+									style="overflow-y: scroll;" id="versionList">
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
 											name="SelectedVersion" id="Cramer_2" value="Cramer 2">
@@ -354,16 +364,28 @@ html, body {
 								<div class="filter-header bg-transparent">
 									<div class="input-group input-group-sm">
 										<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1"><i class="fas fa-filter"></i></span>
+											<span class="input-group-text" id="basic-addon1"><i
+												class="fas fa-filter"></i></span>
 										</div>
 										<input type="text" class="form-control form-control-sm"
 											id="inputModule" placeholder="Filter Module"
 											onkeyup="filterModules()">
 									</div>
+									<div class="row justify-content-center"
+										style="margin-top: 2px;	">
+										<span type="button" class="badge badge-secondary badge-sm"
+											onclick="sortListDir('moduleList')">
+											Sort <i class="fas fa-sort"></i>
+										</span>
+
+									</div>
+
+
+
 								</div>
 
-								<div class="cust-padding card-body custom-scrollbar-css" style="overflow-y: scroll;"
-									id="moduleList">
+								<div class="cust-padding card-body custom-scrollbar-css"
+									style="overflow-y: scroll;" id="moduleList">
 
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
@@ -372,6 +394,8 @@ html, body {
 											class="custom-control-label" for="ActivationEngine">Activation
 											Engine</label>
 									</div>
+
+
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
 											name="SelectedModule" value="Amdocs BOSS Manager"
@@ -379,6 +403,7 @@ html, body {
 											class="custom-control-label" for="Amdocs_BOSS_Manager">Amdocs
 											BOSS Manager</label>
 									</div>
+
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
 											name="SelectedModule" value="Amdocs Integration Adapter"
@@ -870,10 +895,11 @@ html, body {
 
 
 					<div class="row justify-content-center">
-					<button type="submit" id="searchBtn" name="searchBtn"
-						value="searchClicked" class="btn btn-outline-danger"><i class="fas fa-search"></i>
+						<button type="submit" id="searchBtn" name="searchBtn"
+							value="searchClicked" class="btn btn-outline-danger">
+							<i class="fas fa-search"></i>
 						</button>
-						</div>
+					</div>
 				</form>
 
 
@@ -973,7 +999,7 @@ html, body {
 					</button>
 				</div>
 
-										<!-- Modal -->
+				<!-- Modal -->
 				<div class="modal fade text-center" id="info_modal" tabindex="-1"
 					role="dialog" aria-labelledby="custom_modal_title"
 					aria-hidden="true">
@@ -990,33 +1016,43 @@ html, body {
 									<b>Avinash Tingre</b>
 								</h4>
 								Software Support Engineer<br>with 2.5+ years of experience<br>
-								
-								<div class="row align-items-center justify-content-center" style="margin-top: 20px;">
-								
-								
-								<div class="col col-sm-5">
-									<div class="btn-group" role="group" aria-label="Basic example">
-  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
-  										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a mail</a>
-									</div>
-								</div>
 
-								<div class="col col-sm-5">
-									<div class="btn-group" role="group" aria-label="Basic example">
-  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comments"></i></button>
-  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Ping me on Skype</a>
+								<div class="row align-items-center justify-content-center"
+									style="margin-top: 20px;">
+
+
+									<div class="col col-sm-5">
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-outline-success btn-sm"
+												disabled>
+												<i class="fas fa-envelope"></i>
+											</button>
+											<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor"
+												role="button" class="btn btn-outline-success btn-sm">Drop
+												a mail</a>
+										</div>
 									</div>
+
+									<div class="col col-sm-5">
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-outline-success btn-sm"
+												disabled>
+												<i class="fas fa-comments"></i>
+											</button>
+											<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor"
+												role="button" class="btn btn-outline-success btn-sm">Ping
+												me on Skype</a>
+										</div>
+									</div>
+
+
+
+
 								</div>
-								
-	
-						
-								
-								</div>		
 
 							</div>
 							<div class="modal-footer">
-								<button type="button"
-									class="btn btn-secondary btn-sm"
+								<button type="button" class="btn btn-secondary btn-sm"
 									data-dismiss="modal" id="result_close_btn">Close</button>
 
 							</div>
@@ -1028,31 +1064,37 @@ html, body {
 
 
 	</div>
-				<div class="row">
-					<div id="browserWarningWrapper" aria-live="polite" aria-atomic="true"
-					style="position: relative; z-index: 9" class="d-flex justify-content-center align-items-center">
-					<div id="browserWarning" class="toast" data-autohide="false"
-						style="min-width: 300px; position: fixed;top: 50px; left:50%; margin-left:-150px;"
-						role="alert" aria-live="assertive"
-						aria-atomic="true">
-						<div class="toast-header">
-							<strong class="mr-auto text-danger">Warning !</strong>
-							<!-- <button type="button" class="ml-2 mb-1 close"
+	<div class="row">
+		<div id="browserWarningWrapper" aria-live="polite" aria-atomic="true"
+			style="position: relative; z-index: 9"
+			class="d-flex justify-content-center align-items-center">
+			<div id="browserWarning" class="toast" data-autohide="false"
+				style="min-width: 300px; position: fixed; top: 50px; left: 50%; margin-left: -150px;"
+				role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header">
+					<strong class="mr-auto text-danger">Warning !</strong>
+					<!-- <button type="button" class="ml-2 mb-1 close"
 								data-dismiss="toast" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button> -->
-						</div>
-						
-						<div id="browserWarningBody" class="toast-body bg-secondary text-white">Currently not supported in <em><b>Internet Explorer.</b></em><br>
-						Try with <b>Google Chrome.</b></div>
-					</div>
 				</div>
+
+				<div id="browserWarningBody"
+					class="toast-body bg-secondary text-white">
+					Currently not supported in <em><b>Internet Explorer.</b></em><br>
+					Try with <b>Google Chrome.</b>
 				</div>
-	
+			</div>
+		</div>
+	</div>
+
 
 	<script type="text/javascript" src="js/jquery-3.5.1.slim.min.js"></script>
 	<script type="text/javascript" src="js/popper.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/dom-to-image.js"></script>
+	<script src="js/Filesaver.js"></script>
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#copyToast').toast('hide');
@@ -1064,7 +1106,6 @@ html, body {
 		})
 	</script>
 	<script type="text/javascript">
-	
 		function checkFields(form) {
 			var checks_radios = form.find(':checkbox, :radio'), inputs = form
 					.find(':input').not(checks_radios).not(
@@ -1131,40 +1172,90 @@ html, body {
 			}
 		}
 
-		document.onreadystatechange = function() { 
-            if (document.readyState !== "complete") { 
-                document.querySelector( 
-                  "body").style.visibility = "hidden"; 
-                document.querySelector( 
-                  "#se-pre-con").style.visibility = "visible"; 
-            } else { 
-                document.querySelector( 
-                  "#se-pre-con").style.display = "none"; 
-                document.querySelector( 
-                  "body").style.visibility = "visible"; 
-            } 
-        }; 
+		document.onreadystatechange = function() {
+			if (document.readyState !== "complete") {
+				document.querySelector("body").style.visibility = "hidden";
+				document.querySelector("#se-pre-con").style.visibility = "visible";
+			} else {
+				document.querySelector("#se-pre-con").style.display = "none";
+				document.querySelector("body").style.visibility = "visible";
+			}
+		};
 
-        (function () {
-            var googleChrome = {
-              string: navigator.userAgent.match(/Chrome\/(\d+)/)
-              
-            };
-			
-            googleChrome.version = googleChrome.string ? parseInt(googleChrome.string[1], 10) : null;
+		(function() {
+			var googleChrome = {
+				string : navigator.userAgent.match(/Chrome\/(\d+)/)
 
-            if (!googleChrome.string) {
-              document.getElementById("container-fluid").style.display= "none";
-      		  document.getElementById('browserWarningWrapper').style.display="block";
-    		  $('#browserWarning').toast('show');
-    		  
-            }else{
-            	document.getElementById('browserWarning').style.display="none";
-            	$('#browserWarning').toast('hide');
-            	
-            	}
-        })();
-                
+			};
+
+			googleChrome.version = googleChrome.string ? parseInt(
+					googleChrome.string[1], 10) : null;
+
+			if (!googleChrome.string) {
+				document.getElementById("container-fluid").style.display = "none";
+				document.getElementById('browserWarningWrapper').style.display = "block";
+				$('#browserWarning').toast('show');
+
+			} else {
+				document.getElementById('browserWarning').style.display = "none";
+				$('#browserWarning').toast('hide');
+
+			}
+		})();
+
+		function sortListDir(elementId) {
+			var list, i, switching, b, shouldSwitch, dir, switchcount = 0;
+			switching = true;
+			div = document.getElementById(elementId);
+
+			// Set the sorting direction to ascending:
+			dir = "asc";
+			// Make a loop that will continue until no switching has been done:
+			while (switching) {
+				// Start by saying: no switching is done:
+				switching = false;
+				b = div.getElementsByTagName("div")
+				// Loop through all list-items:
+				for (i = 0; i < (b.length - 1); i++) {
+					// Start by saying there should be no switching:
+					shouldSwitch = false;
+					/* Check if the next item should switch place with the current item,
+					based on the sorting direction (asc or desc): */
+					if (dir == "asc") {
+						if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML
+								.toLowerCase()) {
+							/* If next item is alphabetically lower than current item,
+							mark as a switch and break the loop: */
+							shouldSwitch = true;
+							break;
+						}
+					} else if (dir == "desc") {
+						if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML
+								.toLowerCase()) {
+							/* If next item is alphabetically higher than current item,
+							mark as a switch and break the loop: */
+							shouldSwitch = true;
+							break;
+						}
+					}
+				}
+				if (shouldSwitch) {
+					/* If a switch has been marked, make the switch
+					and mark that a switch has been done: */
+					b[i].parentNode.insertBefore(b[i + 1], b[i]);
+					switching = true;
+					// Each time a switch is done, increase switchcount by 1:
+					switchcount++;
+				} else {
+					/* If no switching has been done AND the direction is "asc",
+					set the direction to "desc" and run the while loop again. */
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
 	</script>
 </body>
 </html>
