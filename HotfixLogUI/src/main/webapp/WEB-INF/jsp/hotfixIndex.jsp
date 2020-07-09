@@ -41,6 +41,8 @@ html, body {
 <body class="custom-body" style="margin: 0;">
 	<div class="se-pre-con" id="se-pre-con"></div>
 	<%
+	request.getSession(false);
+
 		InetAddress ip = InetAddress.getByName(request.getRemoteAddr());
 
 		request.setAttribute("HostAddress", ip.getHostAddress());

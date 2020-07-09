@@ -29,6 +29,7 @@
 <body>
 
 	<%
+	request.getSession(false);
 		String show_input = "";
 		if ("searchClicked".equals(request.getParameter("searchBtn"))) {
 	
