@@ -168,17 +168,17 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 								<div class="row align-items-center justify-content-center" style="margin-top: 20px;">
 								
 								
-								<div class="col col-sm-5">
+								<div class="col col-sm-4">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
-  										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a mail</a>
+  										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a Mail</a>
 									</div>
 								</div>
 
-								<div class="col col-sm-5">
+								<div class="col col-sm-4">
 									<div class="btn-group" role="group" aria-label="Basic example">
-  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comments"></i></button>
-  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Ping me on Skype</a>
+  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comment"></i></button>
+  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Say Hello</a>
 									</div>
 								</div>
 								

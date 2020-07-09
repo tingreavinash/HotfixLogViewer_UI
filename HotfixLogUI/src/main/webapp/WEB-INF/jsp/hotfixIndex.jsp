@@ -159,7 +159,7 @@ html, body {
 												class="fas fa-filter"></i></span>
 										</div>
 										<input type="text" class="form-control form-control-sm"
-											id="inputVersion" placeholder="Filter Version"
+											id="inputVersion" placeholder="Enter version name"
 											onkeyup="filterVersions()">
 									</div>
 									
@@ -368,7 +368,7 @@ html, body {
 												class="fas fa-filter"></i></span>
 										</div>
 										<input type="text" class="form-control form-control-sm"
-											id="inputModule" placeholder="Filter Module"
+											id="inputModule" placeholder="Enter module name"
 											onkeyup="filterModules()">
 									</div>
 									<div class="row justify-content-center"
@@ -913,7 +913,7 @@ html, body {
 
 
 				<div id="copyToastWrapper" aria-live="polite" aria-atomic="true"
-					style="position: relative;">
+					style="position: relative; display:none">
 					<div id="copyToast" class="toast"
 						style="min-width: 200px; z-index: 9; position: fixed; top: 20px; right: 20px;"
 						role="alert" data-delay="10000" aria-live="assertive"
@@ -999,7 +999,7 @@ html, body {
 					</button>
 				</div>
 
-				<!-- Modal -->
+										<!-- Modal -->
 				<div class="modal fade text-center" id="info_modal" tabindex="-1"
 					role="dialog" aria-labelledby="custom_modal_title"
 					aria-hidden="true">
@@ -1016,43 +1016,33 @@ html, body {
 									<b>Avinash Tingre</b>
 								</h4>
 								Software Support Engineer<br>with 2.5+ years of experience<br>
-
-								<div class="row align-items-center justify-content-center"
-									style="margin-top: 20px;">
-
-
-									<div class="col col-sm-5">
-										<div class="btn-group" role="group" aria-label="Basic example">
-											<button type="button" class="btn btn-outline-success btn-sm"
-												disabled>
-												<i class="fas fa-envelope"></i>
-											</button>
-											<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor"
-												role="button" class="btn btn-outline-success btn-sm">Drop
-												a mail</a>
-										</div>
+								
+								<div class="row align-items-center justify-content-center" style="margin-top: 20px;">
+								
+								
+								<div class="col col-sm-4">
+									<div class="btn-group" role="group" aria-label="Basic example">
+  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
+  										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a Mail</a>
 									</div>
-
-									<div class="col col-sm-5">
-										<div class="btn-group" role="group" aria-label="Basic example">
-											<button type="button" class="btn btn-outline-success btn-sm"
-												disabled>
-												<i class="fas fa-comments"></i>
-											</button>
-											<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor"
-												role="button" class="btn btn-outline-success btn-sm">Ping
-												me on Skype</a>
-										</div>
-									</div>
-
-
-
-
 								</div>
+
+								<div class="col col-sm-4">
+									<div class="btn-group" role="group" aria-label="Basic example">
+  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comment"></i></button>
+  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Say Hello</a>
+									</div>
+								</div>
+								
+	
+						
+								
+								</div>		
 
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary btn-sm"
+								<button type="button"
+									class="btn btn-secondary btn-sm"
 									data-dismiss="modal" id="result_close_btn">Close</button>
 
 							</div>

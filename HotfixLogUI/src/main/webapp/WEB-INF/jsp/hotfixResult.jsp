@@ -1,3 +1,4 @@
+<%@page import="java.net.ConnectException"%>
 <%@page import="java.util.Locale"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.text.DateFormat"%>
@@ -221,8 +222,7 @@
 					
 					</div>
 					<div class="col col-sm-2">
-					<span class="copy_icon" data-toggle="tooltip" data-animation="true"
-						data-placement="bottom" title="Copy to clipboard"
+					<span class="copy_icon" 
 					onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>')"><i class="fas fa-copy"></i></span>
 					
 					</div>
@@ -515,21 +515,37 @@
 
 						}
 
-					} catch (Exception ex) {
+					} catch (ConnectException ex) {
 						System.out.println("Server Down.\n" + ex.getMessage());
-						ex.printStackTrace();
+						
 		%>
 		<div class="alert alert-warning" role="alert">
 			<h4 class="alert-heading">Oops !</h4>
 			<p>
-				Operation failed due to any of below reasons:<br> 1. Server is
-				down.<br> 2. Connection timed out. <br>
+				Operation failed due to any of below reasons:<br> 
+				1. Server is down.<br>
+				2. Connection timed out. <br>
 			</p>
 			<hr>
 			<p class="mb-0">Try again with improved criteria.</p>
 		</div>
 		<%
-			} finally {
+			}catch(Exception ex){
+				System.out.println("Exception: "+ex.getMessage());
+				%>
+				<div class="alert alert-warning" role="alert">
+					<h4 class="alert-heading">Oops !</h4>
+					<p>
+						Operation failed due to any of below reasons:<br> 
+						1. Server is down.<br>
+						2. Connection timed out. <br>
+					</p>
+					<hr>
+					<p class="mb-0">Try again with improved criteria.</p>
+				</div>
+				<%
+
+			}finally {
 						con.disconnect();
 						System.out.println("Connection closed.");
 					}
@@ -581,7 +597,6 @@
 
 			domtoimage.toBlob(document.getElementById(elementId))
 		    .then(function (blob) {
-			    console.log('Entered in file save.'+elementId);
 		        window.saveAs(blob, 'HF_Details_'+ecpNumber+'.png');
 		    });
 
