@@ -266,8 +266,40 @@
 					<%
 						}
 					%>
+					<%
+					String requestDateString="-";
+					String releasedDateString="-";
+					try{
+					    Date date=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).parse(ecp.getRequestDate());
+					    SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEEE, d MMM yyyy");
+					    requestDateString=dateFormatter.format(date);
+					    
+					}catch(Exception ex){
+						ex.printStackTrace();
+					}
+					
+					try{
+						Date date=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).parse(ecp.getReleasedDate());
+					    SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEEE, d MMM yyyy");
+					    releasedDateString=dateFormatter.format(date);
+
+					    
+					}catch(Exception ex){
+						ex.printStackTrace();
+					}
+
+					%>
+								
 					<div class="row justify-content-end">
-					<button class="btn btn-warning btn-sm" onclick="saveImage('ecp_image_<%=ecp.get_id()%>', '<%=ecp.getEcpNo()%>')">
+					<button class="btn btn-warning btn-sm" onclick="emailHotfix('<%=ecp.getEcpNo().replace("\n", "<br>")%>','<%=ecp.getDescription().replace("\n", "<br>")%>','<%=ecp.getCaseOrCrNo().replace("\n", "<br>")%>',
+					'<%=ecp.getCramerVersion().replace("\n", "<br>")%>','<%=ecp.getEcpFaulty().replace("\n", "<br>")%>','<%=ecp.getFileLocationInPerforce().replace("\n", "<br>")%>','<%=ecp.getFilesModifiedInPerforce().replace("\n", "<br>")%>','<%=ecp.getFilesReleasedToCustomer().replace("\n", "<br>")%>',
+					'<%=ecp.getFixedBy().replace("\n", "<br>")%>','<%=ecp.getLatestEcp().replace("\n", "<br>")%>',
+					'<%=ecp.getModule().replace("\n", "<br>")%>','<%=ecp.getNotes().replace("\n", "<br>")%>','<%=ecp.getPrereqForLatestEcp().replace("\n", "<br>")%>','<%=releasedDateString%>','<%=requestDateString%>',
+					'<%=ecp.getRequestor().replace("\n", "<br>")%>','<%=ecp.getRolledIntoVersion().replace("\n", "<br>")%>')">
+					Email <i class="fas fa-share-square"></i>
+					</button>
+					
+					<button class="btn btn-warning btn-sm" style="margin-left: 10px;" onclick="saveImage('ecp_image_<%=ecp.get_id()%>', '<%=ecp.getEcpNo()%>')">
 					Save <i class="fas fa-download"></i>
 					</button>
 					</div>
@@ -409,17 +441,7 @@
 						<div class="col">
 							<div>
 								<span class="badge badge-pill badge-secondary hf-detail-tag">Requested Date</span><br>
-								<%
-								String requestDateString="-";
-								try{
-								    Date date=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).parse(ecp.getRequestDate());
-								    SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEEE, d MMM yyyy");
-								    requestDateString=dateFormatter.format(date);
-								    
-								}catch(Exception ex){
-									ex.printStackTrace();
-								}
-								%>
+								
 								
 								<%=requestDateString%>
 							</div>
@@ -428,18 +450,7 @@
 						<div class="col">
 							<div>
 								<span class="badge badge-pill badge-secondary hf-detail-tag">Released Date</span><br>
-								<%
-								String releasedDateString="-";
-								try{
-									Date date=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).parse(ecp.getReleasedDate());
-								    SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEEE, d MMM yyyy");
-								    releasedDateString=dateFormatter.format(date);
 
-								    
-								}catch(Exception ex){
-									ex.printStackTrace();
-								}
-								%>
 								<%=releasedDateString%>
 							</div>
 
@@ -602,7 +613,40 @@
 		    });
 
 		}
+		function emailHotfix(EcpNo, Description, CaseOrCrNo, CramerVersion, EcpFaulty, FileLocationInPerforce, 
+				FilesModifiedInPerforce, FilesReleasedToCustomer, FixedBy, LatestEcp,
+				Module, Notes, PrereqForLatestEcp, releasedDate, requestDate,
+				Requestor, RolledIntoVersion){
+			console.log(EcpNo+'\r\n'+Description+'\r\n'+ CaseOrCrNo+'\r\n'+ CramerVersion+'\r\n'+ EcpFaulty+'\r\n'+ FileLocationInPerforce+'\r\n'+ 
+					FilesModifiedInPerforce+'\r\n'+FilesReleasedToCustomer+'\r\n'+FixedBy+'\r\n'+ LatestEcp+'\r\n'+
+					Module+'\r\n'+ Notes+'\r\n'+ PrereqForLatestEcp+'\r\n'+ releasedDate+'\r\n'+ requestDate+'\r\n'+
+					Requestor+'\r\n'+ RolledIntoVersion);
 
+			var subject='Hotfix Details - '+EcpNo.replace("<br>",", ");
+			
+			var body='Hotfix Number:\t\t'+EcpNo.replace("<br>",", ");
+			body+='\r\nDescription:\t\t'+Description.replace("<br>",", ");
+			body+='\r\nLatest Hotfix:\t\t'+LatestEcp.replace("<br>",", ");
+			body+='\r\nPrereq\'s for latest HF:\t'+PrereqForLatestEcp.replace("<br>",", ");
+			body+='\r\nModule:\t\t'+Module.replace("<br>",", ");
+			body+='\r\nCase or CR No:\t\t'+CaseOrCrNo.replace("<br>",", ");
+			body+='\r\nVersion:\t\t'+CramerVersion.replace("<br>",", ");
+			body+='\r\nRolled into:\t\t'+RolledIntoVersion.replace("<br>",", ");
+			body+='\r\nIs HF faulty?:\t\t'+EcpFaulty.replace("<br>",", ");
+			body+='\r\nFixed By:\t\t'+FixedBy.replace("<br>",", ");
+			body+='\r\nRequested By:\t\t'+Requestor.replace("<br>",", ");
+			body+='\r\nReleased Date:\t\t'+releasedDate.replace("<br>",", ");
+			body+='\r\nRequested Date:\t'+requestDate.replace("<br>",", ");
+			body+='\r\nNotes:\t\t\t'+Notes.replace("<br>",", ");
+			body+='\r\nFiles Location:\t\t'+FileLocationInPerforce.replace("<br>",", ")	
+			body+='\r\nFiles Modified:\t\t'+FilesModifiedInPerforce.replace("<br>",", ");
+			body+='\r\nFiles Released:\t\t'+FilesReleasedToCustomer.replace("<br>",", ");
+			body+='\r\n\r\n====================================';
+			body+='\r\nReference: http://avinasht01/';
+
+			
+			window.location.assign('mailto:?subject='+subject+'&body='+encodeURIComponent(body));
+			}
 		
 	</script>
 	
