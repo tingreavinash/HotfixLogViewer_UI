@@ -7,6 +7,7 @@ package com.avinash.HotfixLogUI.Model;
 import java.util.Map;
 
 public class ECPLog{
+	
 	private long _id;
 	private String cramerVersion;
 	private String isPreRequisite;
