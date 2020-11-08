@@ -1,0 +1,59 @@
+html {
+	height: 100%;
+	/* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); */
+	background-color: #FFE53B;
+	background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+	overflow: hidden;
+}
+
+#container-fluid {
+	background-color: #FFE53B;
+	background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+}
+
+.name-anchor {
+	text-decoration: none;
+	color: inherit;
+}
+
+.name-anchor:hover {
+	text-decoration: underline;
+	color: inherit;
+}
+
+.btn-outline-white-custom {
+	color: #343a40;
+	border-color: #343a40;
+}
+
+.btn-outline-white-custom:hover {
+	color: #fff;
+	background-color: #343a40;
+	border-color: #343a40;
+}
+
+.profile-btn {
+	color: white;
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.profile-btn:hover {
+	opacity: 1;
+}
+
+#header {
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.card {
+	opacity: 0.9;
+}
+
+.card-btn-custom {
+	bottom: 20px;
+	position: absolute;
+	right: 35%;
+}

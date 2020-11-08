@@ -67,7 +67,7 @@
 }
 
 .hf-list-top{
-	font-size: medium;
+	font-size: small;
 	
 }
 .custom-card{
@@ -176,6 +176,7 @@ border-color: #7952b3;
 }
 
 .bd-callout {
+	font-size: small;
 	padding: 1.25rem;
 	margin-top: -0.75rem;
 	margin-bottom: 1.25rem;

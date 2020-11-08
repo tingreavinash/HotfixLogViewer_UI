@@ -65,7 +65,7 @@ System.out.println("Host:\t"+ip.getHostName().toString());
       <div class="card-body ">
         <p class="card-text">Application for searching the hotfix details.</p>
 
-		<a href="http://avinasht01/HotfixLogUI" target="_blank" class="btn btn-outline-white-custom btn-sm card-btn-custom">Visit Application<i class="fas fa-external-link-square-alt ml-2"></i></a>        
+		<a href="/HotfixLogUI" target="_blank" class="btn btn-outline-white-custom btn-sm card-btn-custom">Visit Application<i class="fas fa-external-link-square-alt ml-2"></i></a>        
       </div>
 
       
