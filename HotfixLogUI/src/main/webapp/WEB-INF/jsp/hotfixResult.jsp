@@ -223,8 +223,10 @@
 					
 					</div>
 					<div class="col col-sm-2">
-					<span class="copy_icon" 
-					onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>')"><i class="fas fa-copy"></i></span>
+					<span class="copy_icon" id="copy_ecpno_<%=ecp.get_id()%>"
+					data-toggle="tooltip" data-placement="bottom"
+								title="Copy to clipboard"
+					onclick="copyToClipboard('ecpno_<%=ecp.get_id()%>', 'description_<%=ecp.get_id()%>', 'copy_ecpno_<%=ecp.get_id()%>')"><i class="fas fa-copy"></i></span>
 					
 					</div>
 					</div>
@@ -580,14 +582,14 @@
 		%>
 	</div>
 	<script type="text/javascript">
-		function copyToClipboard(ecpNo, description) {
+		function copyToClipboard(ecpNo, description, copyTagId) {
 
 			const myTextarea = document.createElement('textarea');
 
 			var copyString = 'HF Number:\t\t'
-					+ document.getElementById(ecpNo).innerHTML
-					+ '\r\nDescription:\t'
-					+ document.getElementById(description).innerHTML;
+					+ document.getElementById(ecpNo).innerHTML.trim()
+					+ '\nDescription:\t'
+					+ document.getElementById(description).innerHTML.trim();
 
 			myTextarea.innerHTML = copyString;
 
@@ -601,8 +603,11 @@
 			document.getElementById('copyToastWrapper').style.display="block";
 			document.getElementById('copyToastBody').innerHTML =document.getElementById(ecpNo).innerHTML+'<br>(Hotfix number and description)';
 			
-			$('#copyToast').toast('show');
+			//$('#copyToast').toast('show');
 
+			var copyId = '#'+copyTagId;
+			$(copyId).attr("title", "Copied \u2713").tooltip("_fixTitle").tooltip("show").attr("title", "Copy to clipboard").tooltip("_fixTitle");
+			
 
 		}
 		function saveImage(elementId,ecpNumber) {
