@@ -111,7 +111,7 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 
 		<div class="row align-items-center justify-content-center" style="margin-top: 20px;">		
 		<h6 class="text-light small font-weight-bold "><i class="fas fa-code"></i> with <i class="fas fa-heart" ></i> by 
-		<a href="sip:avinash.tingre@amdocs.com" class="name-anchor" >Avinash Tingre</a></h6>
+		<a href="sip:avinash.tingre@xyz.com" class="name-anchor" >Avinash Tingre</a></h6>
 		</div>
 		
 
@@ -171,14 +171,14 @@ System.out.println("Host:\t"+ip.getHostName().toString());
 								<div class="col col-sm-4">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
-  										<a href="mailto:avinash.tingre@amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a Mail</a>
+  										<a href="mailto:avinash.tingre@xyz.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a Mail</a>
 									</div>
 								</div>
 
 								<div class="col col-sm-4">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comment"></i></button>
-  										<a href="sip:avinash.tingre@amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Say Hello</a>
+  										<a href="sip:avinash.tingre@xyz.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Say Hello</a>
 									</div>
 								</div>
 								
