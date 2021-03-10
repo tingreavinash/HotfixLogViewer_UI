@@ -150,8 +150,9 @@
 				ObjectMapper objectMapper = new ObjectMapper();
 				HttpURLConnection con = null;
 				try {
-					
-					URL url = new URL("http://parasd04:4569/HFLogViewer/getAllResults" + paramString);
+					System.out.println("ParamString: "+paramString);
+
+					URL url = new URL("http://localhost:7777/HFLogViewer/getAllResults" + paramString);
 					con = (HttpURLConnection) url.openConnection();
 					con.setRequestMethod("GET");
 					con.setRequestProperty("Content-Type", "application/json");

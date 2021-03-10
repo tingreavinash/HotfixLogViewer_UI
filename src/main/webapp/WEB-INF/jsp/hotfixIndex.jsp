@@ -180,179 +180,179 @@ html, body {
 									style="overflow-y: scroll;" id="versionList">
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_2" value="Cramer 2">
-										<label class="custom-control-label" for="Cramer_2">Cramer
+											name="SelectedVersion" id="AB_2" value="AB 2">
+										<label class="custom-control-label" for="AB_2">AB
 											2</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_3" value="Cramer 3">
-										<label class="custom-control-label" for="Cramer_3">Cramer
+											name="SelectedVersion" id="AB_3" value="AB 3">
+										<label class="custom-control-label" for="AB_3">AB
 											3</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_4" value="Cramer 4">
-										<label class="custom-control-label" for="Cramer_4">Cramer
+											name="SelectedVersion" id="AB_4" value="AB 4">
+										<label class="custom-control-label" for="AB_4">AB
 											4</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_5_Rel_1"
-											value="Cramer 5 Rel 1"> <label
-											class="custom-control-label" for="Cramer_5_Rel_1">Cramer
+											name="SelectedVersion" id="AB_5_Rel_1"
+											value="AB 5 Rel 1"> <label
+											class="custom-control-label" for="AB_5_Rel_1">AB
 											5 Rel 1</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_5_Rel_2"
-											value="Cramer 5 Rel 2"> <label
-											class="custom-control-label" for="Cramer_5_Rel_2">Cramer
+											name="SelectedVersion" id="AB_5_Rel_2"
+											value="AB 5 Rel 2"> <label
+											class="custom-control-label" for="AB_5_Rel_2">AB
 											5 Rel 2</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_5_Rel_3"
-											value="Cramer 5 Rel 3"> <label
-											class="custom-control-label" for="Cramer_5_Rel_3">Cramer
+											name="SelectedVersion" id="AB_5_Rel_3"
+											value="AB 5 Rel 3"> <label
+											class="custom-control-label" for="AB_5_Rel_3">AB
 											5 Rel 3</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_1_GA1"
-											value="Cramer 6 Rel 1 GA1"> <label
-											class="custom-control-label" for="Cramer_6_Rel_1_GA1">Cramer
+											name="SelectedVersion" id="AB_6_Rel_1_GA1"
+											value="AB 6 Rel 1 GA1"> <label
+											class="custom-control-label" for="AB_6_Rel_1_GA1">AB
 											6 Rel 1 GA1</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_1"
-											value="Cramer 6 Rel 1"> <label
-											class="custom-control-label" for="Cramer_6_Rel_1">Cramer
+											name="SelectedVersion" id="AB_6_Rel_1"
+											value="AB 6 Rel 1"> <label
+											class="custom-control-label" for="AB_6_Rel_1">AB
 											6 Rel 1</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_1_SC_1_1"
-											value="Cramer 6 Rel 1\n(SC 1.1)"> <label
-											class="custom-control-label" for="Cramer_6_Rel_1_SC_1_1">Cramer
+											name="SelectedVersion" id="AB_6_Rel_1_SC_1_1"
+											value="AB 6 Rel 1\n(SC 1.1)"> <label
+											class="custom-control-label" for="AB_6_Rel_1_SC_1_1">AB
 											6 Rel 1 (SC 1.1)</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_2"
-											value="Cramer 6 Rel 2"> <label
-											class="custom-control-label" for="Cramer_6_Rel_2">Cramer
+											name="SelectedVersion" id="AB_6_Rel_2"
+											value="AB 6 Rel 2"> <label
+											class="custom-control-label" for="AB_6_Rel_2">AB
 											6 Rel 2</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_3"
-											value="Cramer 6 Rel 3"> <label
-											class="custom-control-label" for="Cramer_6_Rel_3">Cramer
+											name="SelectedVersion" id="AB_6_Rel_3"
+											value="AB 6 Rel 3"> <label
+											class="custom-control-label" for="AB_6_Rel_3">AB
 											6 Rel 3</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_4"
-											value="Cramer 6 Rel 4"> <label
-											class="custom-control-label" for="Cramer_6_Rel_4">Cramer
+											name="SelectedVersion" id="AB_6_Rel_4"
+											value="AB 6 Rel 4"> <label
+											class="custom-control-label" for="AB_6_Rel_4">AB
 											6 Rel 4</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_0_0" value="OSS 10.0.0">
-										<label class="custom-control-label" for="OSS_10_0_0">OSS
+											name="SelectedVersion" id="PQR_10_0_0" value="PQR 10.0.0">
+										<label class="custom-control-label" for="PQR_10_0_0">PQR
 											10.0.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_1_0" value="OSS 10.1.0">
-										<label class="custom-control-label" for="OSS_10_1_0">OSS
+											name="SelectedVersion" id="PQR_10_1_0" value="PQR 10.1.0">
+										<label class="custom-control-label" for="PQR_10_1_0">PQR
 											10.1.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_2_0" value="OSS 10.2.0">
-										<label class="custom-control-label" for="OSS_10_2_0">OSS
+											name="SelectedVersion" id="PQR_10_2_0" value="PQR 10.2.0">
+										<label class="custom-control-label" for="PQR_10_2_0">PQR
 											10.2.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_3_0" value="OSS 10.3.0">
-										<label class="custom-control-label" for="OSS_10_3_0">OSS
+											name="SelectedVersion" id="PQR_10_3_0" value="PQR 10.3.0">
+										<label class="custom-control-label" for="PQR_10_3_0">PQR
 											10.3.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_3_1" value="OSS 10.3.1">
-										<label class="custom-control-label" for="OSS_10_3_1">OSS
+											name="SelectedVersion" id="PQR_10_3_1" value="PQR 10.3.1">
+										<label class="custom-control-label" for="PQR_10_3_1">PQR
 											10.3.1</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_3_2" value="OSS 10.3.2">
-										<label class="custom-control-label" for="OSS_10_3_2">OSS
+											name="SelectedVersion" id="PQR_10_3_2" value="PQR 10.3.2">
+										<label class="custom-control-label" for="PQR_10_3_2">PQR
 											10.3.2</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_7_5" value="OSS 7.5">
-										<label class="custom-control-label" for="OSS_7_5">OSS
+											name="SelectedVersion" id="PQR_7_5" value="PQR 7.5">
+										<label class="custom-control-label" for="PQR_7_5">PQR
 											7.5</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_7_5_1" value="OSS 7.5.1">
-										<label class="custom-control-label" for="OSS_7_5_1">OSS
+											name="SelectedVersion" id="PQR_7_5_1" value="PQR 7.5.1">
+										<label class="custom-control-label" for="PQR_7_5_1">PQR
 											7.5.1</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_7_5_2" value="OSS 7.5.2">
-										<label class="custom-control-label" for="OSS_7_5_2">OSS
+											name="SelectedVersion" id="PQR_7_5_2" value="PQR 7.5.2">
+										<label class="custom-control-label" for="PQR_7_5_2">PQR
 											7.5.2</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_8_0_0" value="OSS 8.0.0">
-										<label class="custom-control-label" for="OSS_8_0_0">OSS
+											name="SelectedVersion" id="PQR_8_0_0" value="PQR 8.0.0">
+										<label class="custom-control-label" for="PQR_8_0_0">PQR
 											8.0.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_8_1_0" value="OSS 8.1.0">
-										<label class="custom-control-label" for="OSS_8_1_0">OSS
+											name="SelectedVersion" id="PQR_8_1_0" value="PQR 8.1.0">
+										<label class="custom-control-label" for="PQR_8_1_0">PQR
 											8.1.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_8_2_0" value="OSS 8.2.0">
-										<label class="custom-control-label" for="OSS_8_2_0">OSS
+											name="SelectedVersion" id="PQR_8_2_0" value="PQR 8.2.0">
+										<label class="custom-control-label" for="PQR_8_2_0">PQR
 											8.2.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_0_0" value="OSS 9.0.0">
-										<label class="custom-control-label" for="OSS_9_0_0">OSS
+											name="SelectedVersion" id="PQR_9_0_0" value="PQR 9.0.0">
+										<label class="custom-control-label" for="PQR_9_0_0">PQR
 											9.0.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_1_0" value="OSS 9.1.0">
-										<label class="custom-control-label" for="OSS_9_1_0">OSS
+											name="SelectedVersion" id="PQR_9_1_0" value="PQR 9.1.0">
+										<label class="custom-control-label" for="PQR_9_1_0">PQR
 											9.1.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_2_0" value="OSS 9.2.0">
-										<label class="custom-control-label" for="OSS_9_2_0">OSS
+											name="SelectedVersion" id="PQR_9_2_0" value="PQR 9.2.0">
+										<label class="custom-control-label" for="PQR_9_2_0">PQR
 											9.2.0</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_3_0" value="OSS 9.3.0">
-										<label class="custom-control-label" for="OSS_9_3_0">OSS
+											name="SelectedVersion" id="PQR_9_3_0" value="PQR 9.3.0">
+										<label class="custom-control-label" for="PQR_9_3_0">PQR
 											9.3.0</label>
 									</div>
 								</div>
@@ -400,10 +400,10 @@ html, body {
 
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="xyz BOSS Manager"
-											id="xyz_BOSS_Manager"> <label
-											class="custom-control-label" for="xyz_BOSS_Manager">xyz
-											BOSS Manager</label>
+											name="SelectedModule" value="xyz BPQR Manager"
+											id="xyz_BPQR_Manager"> <label
+											class="custom-control-label" for="xyz_BPQR_Manager">xyz
+											BPQR Manager</label>
 									</div>
 
 									<div class="custom-control custom-checkbox">
@@ -656,34 +656,34 @@ html, body {
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSS Foundations"
-											id="OSS_Foundations"> <label
-											class="custom-control-label" for="OSS_Foundations">OSS
+											name="SelectedModule" value="PQR Foundations"
+											id="PQR_Foundations"> <label
+											class="custom-control-label" for="PQR_Foundations">PQR
 											Foundations</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSS Reports" id="OSS_Reports">
-										<label class="custom-control-label" for="">OSS Reports</label>
+											name="SelectedModule" value="PQR Reports" id="PQR_Reports">
+										<label class="custom-control-label" for="">PQR Reports</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSSExportAdapter"
-											id="OSSExportAdapter"> <label
-											class="custom-control-label" for="OSSExportAdapter">OSS
+											name="SelectedModule" value="PQRExportAdapter"
+											id="PQRExportAdapter"> <label
+											class="custom-control-label" for="PQRExportAdapter">PQR
 											Export Adapter</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSSIntegrationAdapter_ABM"
-											id="OSSIntegrationAdapter_ABM"> <label
-											class="custom-control-label" for="">OSS Integration
+											name="SelectedModule" value="PQRIntegrationAdapter_ABM"
+											id="PQRIntegrationAdapter_ABM"> <label
+											class="custom-control-label" for="">PQR Integration
 											Adapter (ABM)</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSSUI" id="OSSUI"> <label
-											class="custom-control-label" for="OSSUI">OSSUI</label>
+											name="SelectedModule" value="PQRUI" id="PQRUI"> <label
+											class="custom-control-label" for="PQRUI">PQRUI</label>
 									</div>
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
