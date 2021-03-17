@@ -27,5 +27,13 @@ public class UserInterfaceController {
 	public String loadResultPage() {
 		return "hotfixIndex";
 	}
-	
+
+	@RequestMapping(value="/error", method=RequestMethod.GET)
+	public String errorPage1() {
+		return "error";
+	}
+	@RequestMapping(value="/error", method=RequestMethod.POST)
+	public String errorPage2() {
+		return "error";
+	}
 }

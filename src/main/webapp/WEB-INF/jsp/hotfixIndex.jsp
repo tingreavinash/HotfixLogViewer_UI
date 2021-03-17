@@ -10,7 +10,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.net.HttpURLConnection"%>
-<%@ page import = "java.util.ResourceBundle" %>
+<%@ page import="java.util.ResourceBundle"%>
 <%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="UTF8"%>
@@ -49,95 +49,95 @@ html, body {
 	<%
 	request.getSession(false);
 
-		InetAddress ip = InetAddress.getByName(request.getRemoteAddr());
+	InetAddress ip = InetAddress.getByName(request.getRemoteAddr());
 
-		request.setAttribute("HostAddress", ip.getHostAddress());
-		request.setAttribute("RemoteHost", ip.getHostName());
+	request.setAttribute("HostAddress", ip.getHostAddress());
+	request.setAttribute("RemoteHost", ip.getHostName());
 
-		System.out.println("\nHotfix Log Viewer");
-		System.out.println("Time:\t" + new Date());
-		System.out.println("IP:\t" + ip.getHostAddress().toString());
-		System.out.println("Host:\t" + ip.getHostName().toString());
+	System.out.println("\nHotfix Log Viewer");
+	System.out.println("Time:\t" + new Date());
+	System.out.println("IP:\t" + ip.getHostAddress().toString());
+	System.out.println("Host:\t" + ip.getHostName().toString());
 
-		/*		try{
-		 String auth = request.getHeader("Authorization");
-		 System.out.println("Auth: "+auth);
+	/*		try{
+	 String auth = request.getHeader("Authorization");
+	 System.out.println("Auth: "+auth);
+	 
+	 if (auth == null) {
+	response.setStatus(response.SC_UNAUTHORIZED);
+	response.setHeader("WWW-Authenticate", "NTLM");
+	response.flushBuffer();
+	System.out.println("Debug4");
+	return;
+	  }
+	  if (!auth.startsWith("NTLM ")) {
+		  System.out.println("Debug5");
+		  System.out.println("No NTLM Header");
+		  return;
+	  }
+	  
+	  if (auth.startsWith("NTLM ")){
+		  System.out.println("Debug6");
+
+	byte[] msg = Base64.getDecoder().decode(auth.substring(5));
+	StringBuilder sb_test = new StringBuilder();
+	for (int i=0;i<msg.length; i++){
+		sb_test.append(i+"="+msg[i]+", ");
+	}
+	//System.out.println("Test msg: "+sb_test.toString());
+	int off = 0, length, offset;
+	if (msg[8] == 1) {
+	      byte z = 0;
+	      byte[] msg1 = { (byte) 'N', (byte) 'T', (byte) 'L',
+	                  (byte) 'M', (byte) 'S', (byte) 'S', (byte) 'P', z,
+	                  (byte) 2, z, z, z, z, z, z, z, (byte) 40, z, z, z,
+	                  (byte) 1, (byte) 130, z, z, z, (byte) 2, (byte) 2,
+	                  (byte) 2, z, z, z, z, z, z, z, z, z, z, z, z };
+	      response.setHeader("WWW-Authenticate", "NTLM "
+	                  + Base64.getEncoder().encodeToString(msg1));
+	      response.sendError(response.SC_UNAUTHORIZED);
+	      System.out.println("Debug7");
+	      return;
+	} else if (msg[8] == 3) {
+		System.out.println("Debug8");
+	      off = 30;
+
+	      length = msg[off + 17] * 256 + msg[off + 16];
+	      offset = msg[off + 19] * 256 + msg[off + 18];
+	      String remoteHost = new String(msg, offset, length);
+
+	      length = msg[off + 9] * 256 + msg[off + 8];
+	      offset = msg[off + 11] * 256 + msg[off + 10];
+	      String username = new String(msg, offset, length);
+	      
+	      
+	      StringBuffer sb = new StringBuffer();
+	      for (int i = 0; i < username.length(); i += 2) {
+	            sb.append(username.charAt(i));
+	      }
+	      String l_ntuser = new String(sb).toLowerCase();
+	      System.out.println("Time:\t" + new Date());
+	      System.out.println("User:\t"+l_ntuser);
+	      request.setAttribute("NTNET", l_ntuser);
+	      sb.delete(0, sb.length());
+	      
+	      for (int i = 0; i < remoteHost.length(); i += 2) {
+	            sb.append(remoteHost.charAt(i));
+	      }
+	      String remotehost=new String(sb).toLowerCase();
+	      
+	      request.setAttribute("RemoteHost", remotehost);
+	      sb.delete(0, sb.length());
+	}else{
+		System.out.println("Else condition");
+		return;
+	}
 		 
-		 if (auth == null) {
-		    response.setStatus(response.SC_UNAUTHORIZED);
-		    response.setHeader("WWW-Authenticate", "NTLM");
-		    response.flushBuffer();
-		    System.out.println("Debug4");
-		    return;
-		  }
-		  if (!auth.startsWith("NTLM ")) {
-			  System.out.println("Debug5");
-			  System.out.println("No NTLM Header");
-			  return;
-		  }
-		  
-		  if (auth.startsWith("NTLM ")){
-			  System.out.println("Debug6");
-		
-		    byte[] msg = Base64.getDecoder().decode(auth.substring(5));
-		    StringBuilder sb_test = new StringBuilder();
-		    for (int i=0;i<msg.length; i++){
-		    	sb_test.append(i+"="+msg[i]+", ");
-		    }
-		    //System.out.println("Test msg: "+sb_test.toString());
-		    int off = 0, length, offset;
-		    if (msg[8] == 1) {
-		          byte z = 0;
-		          byte[] msg1 = { (byte) 'N', (byte) 'T', (byte) 'L',
-		                      (byte) 'M', (byte) 'S', (byte) 'S', (byte) 'P', z,
-		                      (byte) 2, z, z, z, z, z, z, z, (byte) 40, z, z, z,
-		                      (byte) 1, (byte) 130, z, z, z, (byte) 2, (byte) 2,
-		                      (byte) 2, z, z, z, z, z, z, z, z, z, z, z, z };
-		          response.setHeader("WWW-Authenticate", "NTLM "
-		                      + Base64.getEncoder().encodeToString(msg1));
-		          response.sendError(response.SC_UNAUTHORIZED);
-		          System.out.println("Debug7");
-		          return;
-		    } else if (msg[8] == 3) {
-		    	System.out.println("Debug8");
-		          off = 30;
-		
-		          length = msg[off + 17] * 256 + msg[off + 16];
-		          offset = msg[off + 19] * 256 + msg[off + 18];
-		          String remoteHost = new String(msg, offset, length);
-		
-		          length = msg[off + 9] * 256 + msg[off + 8];
-		          offset = msg[off + 11] * 256 + msg[off + 10];
-		          String username = new String(msg, offset, length);
-		          
-		          
-		          StringBuffer sb = new StringBuffer();
-		          for (int i = 0; i < username.length(); i += 2) {
-		                sb.append(username.charAt(i));
-		          }
-		          String l_ntuser = new String(sb).toLowerCase();
-		          System.out.println("Time:\t" + new Date());
-		          System.out.println("User:\t"+l_ntuser);
-		          request.setAttribute("NTNET", l_ntuser);
-		          sb.delete(0, sb.length());
-		          
-		          for (int i = 0; i < remoteHost.length(); i += 2) {
-		                sb.append(remoteHost.charAt(i));
-		          }
-		          String remotehost=new String(sb).toLowerCase();
-		          
-		          request.setAttribute("RemoteHost", remotehost);
-		          sb.delete(0, sb.length());
-		    }else{
-		    	System.out.println("Else condition");
-		    	return;
-		    }
-			 
-		  }
-				}catch(Exception e){
-					e.getMessage();
-				}
-		*/
+	  }
+			}catch(Exception e){
+		e.getMessage();
+			}
+	*/
 	%>
 
 	<div class="container-fluid h-100" id="container-fluid">
@@ -170,51 +170,51 @@ html, body {
 											id="inputVersion" placeholder="Enter version name"
 											onkeyup="filterVersions()">
 									</div>
-									
+
 									<div class="row justify-content-center"
-										style="margin-top: 2px;	">
+										style="margin-top: 2px;">
 										<span type="button" class="badge badge-secondary badge-sm"
-											onclick="sortListDir('versionList')">
-											Sort <i class="fas fa-sort"></i>
+											onclick="sortListDir('versionList')"> Sort <i
+											class="fas fa-sort"></i>
 										</span>
 
 									</div>
-									
+
 								</div>
 
 								<div class="cust-padding card-body custom-scrollbar-css"
 									style="overflow-y: scroll;" id="versionList">
-									
+
 									<%
-                                ResourceBundle resource = ResourceBundle.getBundle("application");
-                                String getDistinctCramerVersions=resource.getString("getDistinctCramerVersions");
-                                String versionsString="";
-                                List<String> versions = new ArrayList<>();
-                                ObjectMapper objectMapper = new ObjectMapper();
-                                TypeFactory typeFactory = objectMapper.getTypeFactory();
+									ResourceBundle resource = ResourceBundle.getBundle("application");
+									String getDistinctCramerVersions = resource.getString("getDistinctCramerVersions");
+									String versionsString = "";
+									List<String> versions = new ArrayList<>();
+									ObjectMapper objectMapper = new ObjectMapper();
+									TypeFactory typeFactory = objectMapper.getTypeFactory();
+                                    //int a = 2/0;
+									try {
+										versionsString = fetchURL(getDistinctCramerVersions, null);
+										versions = objectMapper.readValue(versionsString, typeFactory.constructCollectionType(List.class, String.class));
 
-                                try{
-                                	versionsString = fetchURL(getDistinctCramerVersions, null);
-                                	versions = objectMapper.readValue(versionsString, typeFactory.constructCollectionType(List.class, String.class));
+									} catch (Exception ex) {
+										System.out.println(ex.getMessage());
+									}
 
-                                }catch(Exception ex){
-                                    System.out.println(ex.getMessage());
-                                }
-
-						
-                                for (int index=0; index < versions.size(); index++){
-                                %>
-                                <div class="custom-control custom-checkbox">
-                                										<input type="checkbox" class="custom-control-input"
-                                											name="SelectedVersion" value="<%=versions.get(index)%>"
-                                											id="<%=versions.get(index).trim().replace(" ","_")%>"> <label
-                                											class="custom-control-label" for="<%=versions.get(index).trim().replace(" ","_")%>">
-                                											<%=versions.get(index)%>
-                                											</label>
-                                									</div>
-                                <%
-                                }
-                                %>
+									for (int index = 0; index < versions.size(); index++) {
+									%>
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input"
+											name="SelectedVersion" value="<%=versions.get(index)%>"
+											id="<%=versions.get(index).trim().replace(" ", "_")%>">
+										<label class="custom-control-label"
+											for="<%=versions.get(index).trim().replace(" ", "_")%>">
+											<%=versions.get(index)%>
+										</label>
+									</div>
+									<%
+									}
+									%>
 								</div>
 							</div>
 						</div>
@@ -234,10 +234,10 @@ html, body {
 											onkeyup="filterModules()">
 									</div>
 									<div class="row justify-content-center"
-										style="margin-top: 2px;	">
+										style="margin-top: 2px;">
 										<span type="button" class="badge badge-secondary badge-sm"
-											onclick="sortListDir('moduleList')">
-											Sort <i class="fas fa-sort"></i>
+											onclick="sortListDir('moduleList')"> Sort <i
+											class="fas fa-sort"></i>
 										</span>
 
 									</div>
@@ -252,32 +252,32 @@ html, body {
 									style="overflow-y: scroll;" id="moduleList">
 
 
-                                <%
-                                String getDistinctModulesEndpoint=resource.getString("getDistinctModulesEndpoint");
-                                String productString="";
-                                List<String> products = new ArrayList<>();
-                                
-                                try{
-                                    productString = fetchURL(getDistinctModulesEndpoint, null);
-                                    products = objectMapper.readValue(productString, typeFactory.constructCollectionType(List.class, String.class));
-                                }catch(Exception ex){
-                                    System.out.println(ex.getMessage());
-                                }
+									<%
+									String getDistinctModulesEndpoint = resource.getString("getDistinctModulesEndpoint");
+									String productString = "";
+									List<String> products = new ArrayList<>();
 
-						
-                                for (int index=0; index < products.size(); index++){
-                                %>
-                                <div class="custom-control custom-checkbox">
-                                										<input type="checkbox" class="custom-control-input"
-                                											name="SelectedModule" value="<%=products.get(index)%>"
-                                											id="<%=products.get(index).trim().replace(" ","_")%>"> <label
-                                											class="custom-control-label" for="<%=products.get(index).trim().replace(" ","_")%>">
-                                											<%=products.get(index)%>
-                                											</label>
-                                									</div>
-                                <%
-                                }
-                                %>
+									try {
+										productString = fetchURL(getDistinctModulesEndpoint, null);
+										products = objectMapper.readValue(productString, typeFactory.constructCollectionType(List.class, String.class));
+									} catch (Exception ex) {
+										System.out.println(ex.getMessage());
+									}
+
+									for (int index = 0; index < products.size(); index++) {
+									%>
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input"
+											name="SelectedModule" value="<%=products.get(index)%>"
+											id="<%=products.get(index).trim().replace(" ", "_")%>">
+										<label class="custom-control-label"
+											for="<%=products.get(index).trim().replace(" ", "_")%>">
+											<%=products.get(index)%>
+										</label>
+									</div>
+									<%
+									}
+									%>
 
 								</div>
 							</div>
@@ -362,7 +362,7 @@ html, body {
 
 
 				<div id="copyToastWrapper" aria-live="polite" aria-atomic="true"
-					style="position: relative; display:none">
+					style="position: relative; display: none">
 					<div id="copyToast" class="toast"
 						style="min-width: 200px; z-index: 9; position: fixed; top: 20px; right: 20px;"
 						role="alert" data-delay="10000" aria-live="assertive"
@@ -380,12 +380,12 @@ html, body {
 				</div>
 				<!-- 	<img alt="Test image" src="image/search_graphic.png"> -->
 				<%
-					if (!"searchClicked".equals(request.getParameter("searchBtn"))) {
+				if (!"searchClicked".equals(request.getParameter("searchBtn"))) {
 				%>
 				<div class="background-search-img"></div>
 
 				<%
-					}
+				}
 				%>
 				<jsp:include page="hotfixResult.jsp"></jsp:include>
 
@@ -448,7 +448,7 @@ html, body {
 					</button>
 				</div>
 
-										<!-- Modal -->
+				<!-- Modal -->
 				<div class="modal fade text-center" id="info_modal" tabindex="-1"
 					role="dialog" aria-labelledby="custom_modal_title"
 					aria-hidden="true">
@@ -466,22 +466,33 @@ html, body {
 								</h4>
 								Software Support Engineer<br>with 2.5+ years of experience<br>
 
-								<div class="row align-items-center justify-content-center" style="margin-top: 20px;">
+								<div class="row align-items-center justify-content-center"
+									style="margin-top: 20px;">
 
 
-								<div class="col col-sm-4">
-									<div class="btn-group" role="group" aria-label="Basic example">
-  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
-  										<a href="mailto:avinash.tingre@Amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a Mail</a>
+									<div class="col col-sm-4">
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-outline-success btn-sm"
+												disabled>
+												<i class="fas fa-envelope"></i>
+											</button>
+											<a href="mailto:avinash.tingre@Amdocs.com" id="mail_anchor"
+												role="button" class="btn btn-outline-success btn-sm">Drop
+												a Mail</a>
+										</div>
 									</div>
-								</div>
 
-								<div class="col col-sm-4">
-									<div class="btn-group" role="group" aria-label="Basic example">
-  										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comment"></i></button>
-  										<a href="sip:avinash.tingre@Amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Say Hello</a>
+									<div class="col col-sm-4">
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-outline-success btn-sm"
+												disabled>
+												<i class="fas fa-comment"></i>
+											</button>
+											<a href="sip:avinash.tingre@Amdocs.com" id="chat_anchor"
+												role="button" class="btn btn-outline-success btn-sm">Say
+												Hello</a>
+										</div>
 									</div>
-								</div>
 
 
 
@@ -490,8 +501,7 @@ html, body {
 
 							</div>
 							<div class="modal-footer">
-								<button type="button"
-									class="btn btn-secondary btn-sm"
+								<button type="button" class="btn btn-secondary btn-sm"
 									data-dismiss="modal" id="result_close_btn">Close</button>
 
 							</div>
@@ -542,6 +552,8 @@ html, body {
 	<script type="text/javascript">
 		$(function() {
 			$('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="popover"]').popover()
+
 		})
 	</script>
 	<script type="text/javascript">
@@ -697,7 +709,7 @@ html, body {
 		}
 	</script>
 
-<%!public String fetchURL(String fullUrl, String plainInput) throws Exception {
+	<%!public String fetchURL(String fullUrl, String plainInput) throws Exception {
 		HttpURLConnection con = null;
 		String response = null;
 		try {
@@ -733,7 +745,7 @@ html, body {
 				response = content.toString();
 			}
 		} catch (Exception ex) {
-		    System.out.println("Exception in Fetch URL");
+			System.out.println("Exception in Fetch URL");
 			throw ex;
 		} finally {
 			con.disconnect();
