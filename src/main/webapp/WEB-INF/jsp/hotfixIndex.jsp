@@ -1,3 +1,8 @@
+<%@page import="com.fasterxml.jackson.databind.type.TypeFactory"%>
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@page import="java.io.Reader"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.net.InetAddress"%>
@@ -5,6 +10,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.net.HttpURLConnection"%>
+<%@ page import = "java.util.ResourceBundle" %>
 <%@page import="java.net.URL"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="UTF8"%>
@@ -178,183 +184,37 @@ html, body {
 
 								<div class="cust-padding card-body custom-scrollbar-css"
 									style="overflow-y: scroll;" id="versionList">
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_2" value="Cramer 2">
-										<label class="custom-control-label" for="Cramer_2">Cramer
-											2</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_3" value="Cramer 3">
-										<label class="custom-control-label" for="Cramer_3">Cramer
-											3</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_4" value="Cramer 4">
-										<label class="custom-control-label" for="Cramer_4">Cramer
-											4</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_5_Rel_1"
-											value="Cramer 5 Rel 1"> <label
-											class="custom-control-label" for="Cramer_5_Rel_1">Cramer
-											5 Rel 1</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_5_Rel_2"
-											value="Cramer 5 Rel 2"> <label
-											class="custom-control-label" for="Cramer_5_Rel_2">Cramer
-											5 Rel 2</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_5_Rel_3"
-											value="Cramer 5 Rel 3"> <label
-											class="custom-control-label" for="Cramer_5_Rel_3">Cramer
-											5 Rel 3</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_1_GA1"
-											value="Cramer 6 Rel 1 GA1"> <label
-											class="custom-control-label" for="Cramer_6_Rel_1_GA1">Cramer
-											6 Rel 1 GA1</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_1"
-											value="Cramer 6 Rel 1"> <label
-											class="custom-control-label" for="Cramer_6_Rel_1">Cramer
-											6 Rel 1</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_1_SC_1_1"
-											value="Cramer 6 Rel 1\n(SC 1.1)"> <label
-											class="custom-control-label" for="Cramer_6_Rel_1_SC_1_1">Cramer
-											6 Rel 1 (SC 1.1)</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_2"
-											value="Cramer 6 Rel 2"> <label
-											class="custom-control-label" for="Cramer_6_Rel_2">Cramer
-											6 Rel 2</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_3"
-											value="Cramer 6 Rel 3"> <label
-											class="custom-control-label" for="Cramer_6_Rel_3">Cramer
-											6 Rel 3</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="Cramer_6_Rel_4"
-											value="Cramer 6 Rel 4"> <label
-											class="custom-control-label" for="Cramer_6_Rel_4">Cramer
-											6 Rel 4</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_0_0" value="OSS 10.0.0">
-										<label class="custom-control-label" for="OSS_10_0_0">OSS
-											10.0.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_1_0" value="OSS 10.1.0">
-										<label class="custom-control-label" for="OSS_10_1_0">OSS
-											10.1.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_2_0" value="OSS 10.2.0">
-										<label class="custom-control-label" for="OSS_10_2_0">OSS
-											10.2.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_3_0" value="OSS 10.3.0">
-										<label class="custom-control-label" for="OSS_10_3_0">OSS
-											10.3.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_3_1" value="OSS 10.3.1">
-										<label class="custom-control-label" for="OSS_10_3_1">OSS
-											10.3.1</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_10_3_2" value="OSS 10.3.2">
-										<label class="custom-control-label" for="OSS_10_3_2">OSS
-											10.3.2</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_7_5" value="OSS 7.5">
-										<label class="custom-control-label" for="OSS_7_5">OSS
-											7.5</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_7_5_1" value="OSS 7.5.1">
-										<label class="custom-control-label" for="OSS_7_5_1">OSS
-											7.5.1</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_7_5_2" value="OSS 7.5.2">
-										<label class="custom-control-label" for="OSS_7_5_2">OSS
-											7.5.2</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_8_0_0" value="OSS 8.0.0">
-										<label class="custom-control-label" for="OSS_8_0_0">OSS
-											8.0.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_8_1_0" value="OSS 8.1.0">
-										<label class="custom-control-label" for="OSS_8_1_0">OSS
-											8.1.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_8_2_0" value="OSS 8.2.0">
-										<label class="custom-control-label" for="OSS_8_2_0">OSS
-											8.2.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_0_0" value="OSS 9.0.0">
-										<label class="custom-control-label" for="OSS_9_0_0">OSS
-											9.0.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_1_0" value="OSS 9.1.0">
-										<label class="custom-control-label" for="OSS_9_1_0">OSS
-											9.1.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_2_0" value="OSS 9.2.0">
-										<label class="custom-control-label" for="OSS_9_2_0">OSS
-											9.2.0</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedVersion" id="OSS_9_3_0" value="OSS 9.3.0">
-										<label class="custom-control-label" for="OSS_9_3_0">OSS
-											9.3.0</label>
-									</div>
+									
+									<%
+                                ResourceBundle resource = ResourceBundle.getBundle("application");
+                                String getDistinctCramerVersions=resource.getString("getDistinctCramerVersions");
+                                String versionsString="";
+                                List<String> versions = new ArrayList<>();
+                                ObjectMapper objectMapper = new ObjectMapper();
+                                TypeFactory typeFactory = objectMapper.getTypeFactory();
+
+                                try{
+                                	versionsString = fetchURL(getDistinctCramerVersions, null);
+                                	versions = objectMapper.readValue(versionsString, typeFactory.constructCollectionType(List.class, String.class));
+
+                                }catch(Exception ex){
+                                    System.out.println(ex.getMessage());
+                                }
+
+						
+                                for (int index=0; index < versions.size(); index++){
+                                %>
+                                <div class="custom-control custom-checkbox">
+                                										<input type="checkbox" class="custom-control-input"
+                                											name="SelectedVersion" value="<%=versions.get(index)%>"
+                                											id="<%=versions.get(index).trim().replace(" ","_")%>"> <label
+                                											class="custom-control-label" for="<%=versions.get(index).trim().replace(" ","_")%>">
+                                											<%=versions.get(index)%>
+                                											</label>
+                                									</div>
+                                <%
+                                }
+                                %>
 								</div>
 							</div>
 						</div>
@@ -386,451 +246,38 @@ html, body {
 
 								</div>
 
+
+
 								<div class="cust-padding card-body custom-scrollbar-css"
 									style="overflow-y: scroll;" id="moduleList">
 
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ActivationEngine"
-											id="ActivationEngine"> <label
-											class="custom-control-label" for="ActivationEngine">Activation
-											Engine</label>
-									</div>
 
+                                <%
+                                String getDistinctModulesEndpoint=resource.getString("getDistinctModulesEndpoint");
+                                String productString="";
+                                List<String> products = new ArrayList<>();
+                                
+                                try{
+                                    productString = fetchURL(getDistinctModulesEndpoint, null);
+                                    products = objectMapper.readValue(productString, typeFactory.constructCollectionType(List.class, String.class));
+                                }catch(Exception ex){
+                                    System.out.println(ex.getMessage());
+                                }
 
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Amdocs BOSS Manager"
-											id="Amdocs_BOSS_Manager"> <label
-											class="custom-control-label" for="Amdocs_BOSS_Manager">Amdocs
-											BOSS Manager</label>
-									</div>
-
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Amdocs Integration Adapter"
-											id="Amdocs_Integration_Adapter"> <label
-											class="custom-control-label" for="Amdocs_Integration_Adapter">Amdocs
-											Integration Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ANN (inc. Search)"
-											id="ANN_inc_Search"> <label
-											class="custom-control-label" for="ANN_inc_Search">ANN
-											(inc. Search)</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Ansible (ANN)" id="Ansible_ANN">
-										<label class="custom-control-label" for="Ansible_ANN">Ansible
-											(ANN)</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="AutomationPackCommon"
-											id="AutomationPackCommon"> <label
-											class="custom-control-label" for="AutomationPackCommon">Automation
-											Pack Common</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="BroadbandAutomationPack"
-											id="BroadbandAutomationPack"> <label
-											class="custom-control-label" for="BroadbandAutomationPack">Broadband
-											Automation Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="BroadbandSyncPack"
-											id="BroadbandSyncPack"> <label
-											class="custom-control-label" for="BroadbandSyncPack">Broadband
-											Sync Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="BusinessObjectsAdapter"
-											id="BusinessObjectsAdapter"> <label
-											class="custom-control-label" for="BusinessObjectsAdapter">Business
-											Objects Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="CapacityPlanner"
-											id="CapacityPlanner"> <label
-											class="custom-control-label" for="CapacityPlanner">Capacity
-											Planner</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule"
-											value="CarrierEthernetServiceAutomationPack"
-											id="CarrierEthernetServiceAutomationPack"> <label
-											class="custom-control-label"
-											for="CarrierEthernetServiceAutomationPack">Carrier
-											Ethernet ServiceAutomationPack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="CES SyncPack" id="CES_SyncPack">
-										<label class="custom-control-label" for="CES_SyncPack">CES
-											SyncPack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="CMDBInventoryPack"
-											id="CMDBInventoryPack"> <label
-											class="custom-control-label" for="CMDBInventoryPack">CMDB
-											Inventory Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Configurator" id="Configurator">
-										<label class="custom-control-label" for="Configurator">Configurator</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Connector" id="Connector">
-										<label class="custom-control-label" for="Connector">Connector</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="CoreSyncPack" id="CoreSyncPack">
-										<label class="custom-control-label" for="CoreSyncPack">Core
-											Sync Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="DeliveryEngine"
-											id="DeliveryEngine"> <label
-											class="custom-control-label" for="">Delivery Engine</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Demo" id="Demo"> <label
-											class="custom-control-label" for="Demo">Demo</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="DeviceModelPack"
-											id="DeviceModelPack"> <label
-											class="custom-control-label" for="DeviceModelPack">Device
-											Model Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="EngineeringAdapter"
-											id="EngineeringAdapter"> <label
-											class="custom-control-label" for="EngineeringAdapter">Engineering
-											Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="EngineeringAdapterforTNE"
-											id="EngineeringAdapterforTNE"> <label
-											class="custom-control-label" for="EngineeringAdapterforTNE">Engineering
-											Adapter for TNE</label>
-									</div>
-
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Foundations" id="Foundations">
-										<label class="custom-control-label" for="Foundations">Foundations</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="GermanLocalizationPack"
-											id="GermanLocalizationPack"> <label
-											class="custom-control-label" for="GermanLocalizationPack">German
-											Localization Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="GESmallworldAdapter"
-											id="GESmallworldAdapter"> <label
-											class="custom-control-label" for="GESmallworldAdapter">GE
-											Smallworld Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="HuaweiActivationPack"
-											id="HuaweiActivationPack"> <label
-											class="custom-control-label" for="HuaweiActivationPack">Huawei
-											Activation Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Installer" id="Installer">
-										<label class="custom-control-label" for="Installer">Installer</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Inventory TMF 639 API"
-											id="Inventory_TMF_639_API"> <label
-											class="custom-control-label" for="Inventory_TMF_639_API">Inventory
-											TMF 639 API</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="InventoryPack"
-											id="InventoryPack"> <label
-											class="custom-control-label" for="InventoryPack">Inventory
-											Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="IPVPN Automation Pack"
-											id="IPVPN_Automation_Pack"> <label
-											class="custom-control-label" for="IPVPN_Automation_Pack">IPVPN
-											Automation Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule"
-											value="IWM - Inventory Workflow Management"
-											id="IWM_Inventory_Workflow_Management"> <label
-											class="custom-control-label"
-											for="IWM_Inventory_Workflow_Management">IWM -
-											Inventory Workflow Management</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule"
-											value="IWS - Inventory Web Services for RM 6.4" id="IWSfor64">
-										<label class="custom-control-label" for="IWSfor64">IWS
-											- Inventory Web Services for RM 6.4</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="IWS - Inventory Web Services"
-											id="IWS"> <label class="custom-control-label"
-											for="IWS">IWS - Inventory Web Services</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="JapaneseLocalizationPack"
-											id="JapaneseLocalizationPack"> <label
-											class="custom-control-label" for="JapaneseLocalizationPack">Japanese
-											Localization Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Java Client" id="Java_Client">
-										<label class="custom-control-label" for="Java_Client">Java
-											Client</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="LocalizationPack"
-											id="LocalizationPack"> <label
-											class="custom-control-label" for="LocalizationPack">Localization
-											Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="MetadataManager"
-											id="MetadataManager"> <label
-											class="custom-control-label" for="MetadataManager">Metadata
-											Manager</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Mobile_Build_Automation_Pack"
-											id="Mobile_Build_Automation_Pack"> <label
-											class="custom-control-label" for="">Mobile Build
-											Automation Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="MPLS SyncPack"
-											id="MPLS_SyncPack"> <label
-											class="custom-control-label" for="MPLS_SyncPack">MPLS
-											Sync Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OrderManagementAdapter"
-											id="OrderManagementAdapter"> <label
-											class="custom-control-label" for="OrderManagementAdapter">Order
-											Management Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSS Foundations"
-											id="OSS_Foundations"> <label
-											class="custom-control-label" for="OSS_Foundations">OSS
-											Foundations</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSS Reports" id="OSS_Reports">
-										<label class="custom-control-label" for="">OSS Reports</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSSExportAdapter"
-											id="OSSExportAdapter"> <label
-											class="custom-control-label" for="OSSExportAdapter">OSS
-											Export Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSSIntegrationAdapter_ABM"
-											id="OSSIntegrationAdapter_ABM"> <label
-											class="custom-control-label" for="">OSS Integration
-											Adapter (ABM)</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="OSSUI" id="OSSUI"> <label
-											class="custom-control-label" for="OSSUI">OSSUI</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ParameterManager"
-											id="ParameterManager"> <label
-											class="custom-control-label" for="ParameterManager">Parameter
-											Manager</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="PlanningEngine"
-											id="PlanningEngine"> <label
-											class="custom-control-label" for="PlanningEngine">Planning
-											Engine</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ResourceManager"
-											id="ResourceManager"> <label
-											class="custom-control-label" for="ResourceManager">Resource
-											Manager (RM/ARM)</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ResourcePlanner"
-											id="ResourcePlanner"> <label
-											class="custom-control-label" for="ResourcePlanner">Resource
-											Planner</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="RMIntegrations"
-											id="RMIntegrations"> <label
-											class="custom-control-label" for="RMIntegrations">RM
-											Integrations</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="RouteFinder" id="RouteFinder">
-										<label class="custom-control-label" for="RouteFinder">Route
-											Finder</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="RPM_Automation_Pack"
-											id="RPM_Automation_Pack"> <label
-											class="custom-control-label" for="RPM_Automation_Pack">RPM
-											Automation Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="RussianLocalizationPack"
-											id="RussianLocalizationPack"> <label
-											class="custom-control-label" for="RussianLocalizationPack">Russian
-											Localization Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="SDH SyncPack" id="SDH_SyncPack">
-										<label class="custom-control-label" for="SDH_SyncPack">SDH
-											Sync Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ServiceAssuranceAdapter"
-											id="ServiceAssuranceAdapter"> <label
-											class="custom-control-label" for="ServiceAssuranceAdapter">Service
-											Assurance Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ServiceCatalog"
-											id="ServiceCatalog"> <label
-											class="custom-control-label" for="ServiceCatalog">Service
-											Catalog</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="ServiceFulfilmentAdapter"
-											id="ServiceFulfilmentAdapter"> <label
-											class="custom-control-label" for="ServiceFulfilmentAdapter">Service
-											Fulfilment Adapter</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="SitePlanner" id="SitePlanner">
-										<label class="custom-control-label" for="SitePlanner">Site
-											Planner</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="SOA" id="SOA"> <label
-											class="custom-control-label" for="SOA">SOA</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="SpanishLocalizationPack"
-											id="SpanishLocalizationPack"> <label
-											class="custom-control-label" for="SpanishLocalizationPack">Spanish
-											Localization Pack</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="SyncAdapter Tivoli MPA"
-											id="SyncAdapter_Tivoli_MPA"> <label
-											class="custom-control-label" for="SyncAdapter_Tivoli_MPA">Sync
-											Adapter Tivoli MPA</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="SyncEngine" id="SyncEngine">
-										<label class="custom-control-label" for="SyncEngine">Sync
-											Engine</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="TaskEngine" id="TaskEngine">
-										<label class="custom-control-label" for="TaskEngine">Task
-											Engine</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="Technology Accelerators"
-											id="Technology_Accelerators"> <label
-											class="custom-control-label" for="Technology_Accelerators">Technology
-											Accelerators</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="TrendPlanner" id="TrendPlanner">
-										<label class="custom-control-label" for="TrendPlanner">Trend
-											Planner</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="UnifiedServiceManager"
-											id="UnifiedServiceManager"> <label
-											class="custom-control-label" for="UnifiedServiceManager">USM
-											- Unified Service Manager</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="XPI (Universal Installer)"
-											id="XPI_Universal_Installer"> <label
-											class="custom-control-label" for="XPI_Universal_Installer">XPI
-											(Universal Installer)</label>
-									</div>
+						
+                                for (int index=0; index < products.size(); index++){
+                                %>
+                                <div class="custom-control custom-checkbox">
+                                										<input type="checkbox" class="custom-control-input"
+                                											name="SelectedModule" value="<%=products.get(index)%>"
+                                											id="<%=products.get(index).trim().replace(" ","_")%>"> <label
+                                											class="custom-control-label" for="<%=products.get(index).trim().replace(" ","_")%>">
+                                											<%=products.get(index)%>
+                                											</label>
+                                									</div>
+                                <%
+                                }
+                                %>
 
 								</div>
 							</div>
@@ -1249,5 +696,51 @@ html, body {
 			}
 		}
 	</script>
+
+<%!public String fetchURL(String fullUrl, String plainInput) throws Exception {
+		HttpURLConnection con = null;
+		String response = null;
+		try {
+			URL url = new URL(fullUrl);
+			con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Content-Type", "application/json");
+
+			con.setConnectTimeout(5000);
+			con.setReadTimeout(5000);
+
+			int status = con.getResponseCode();
+			if (status > 299) {
+				Reader streamReader = null;
+
+				BufferedReader in = new BufferedReader(streamReader);
+				String inputLine;
+				StringBuffer content = new StringBuffer();
+				while ((inputLine = in.readLine()) != null) {
+					content.append(inputLine);
+				}
+				in.close();
+				System.out.println("Below error occured: \n" + content.toString());
+
+			} else {
+				BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				String inputLine;
+				StringBuffer content = new StringBuffer();
+				while ((inputLine = in.readLine()) != null) {
+					content.append(inputLine);
+				}
+				in.close();
+				response = content.toString();
+			}
+		} catch (Exception ex) {
+		    System.out.println("Exception in Fetch URL");
+			throw ex;
+		} finally {
+			con.disconnect();
+		}
+
+		return response;
+	}%>
+
 </body>
 </html>
