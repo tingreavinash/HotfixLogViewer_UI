@@ -400,17 +400,17 @@ html, body {
 
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="xyz BOSS Manager"
-											id="xyz_BOSS_Manager"> <label
-											class="custom-control-label" for="xyz_BOSS_Manager">xyz
+											name="SelectedModule" value="Amdocs BOSS Manager"
+											id="Amdocs_BOSS_Manager"> <label
+											class="custom-control-label" for="Amdocs_BOSS_Manager">Amdocs
 											BOSS Manager</label>
 									</div>
 
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input"
-											name="SelectedModule" value="xyz Integration Adapter"
-											id="xyz_Integration_Adapter"> <label
-											class="custom-control-label" for="xyz_Integration_Adapter">xyz
+											name="SelectedModule" value="Amdocs Integration Adapter"
+											id="Amdocs_Integration_Adapter"> <label
+											class="custom-control-label" for="Amdocs_Integration_Adapter">Amdocs
 											Integration Adapter</label>
 									</div>
 									<div class="custom-control custom-checkbox">
@@ -1025,14 +1025,14 @@ html, body {
 								<div class="col col-sm-4">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-envelope"></i></button>
-  										<a href="mailto:avinash.tingre@xyz.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a Mail</a>
+  										<a href="mailto:avinash.tingre@Amdocs.com" id="mail_anchor" role="button" class="btn btn-outline-success btn-sm">Drop a Mail</a>
 									</div>
 								</div>
 
 								<div class="col col-sm-4">
 									<div class="btn-group" role="group" aria-label="Basic example">
   										<button type="button" class="btn btn-outline-success btn-sm" disabled><i class="fas fa-comment"></i></button>
-  										<a href="sip:avinash.tingre@xyz.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Say Hello</a>
+  										<a href="sip:avinash.tingre@Amdocs.com" id="chat_anchor" role="button" class="btn btn-outline-success btn-sm">Say Hello</a>
 									</div>
 								</div>
 
