@@ -8,6 +8,7 @@
 <%@page import="java.net.InetAddress"%>
 <%@page import="com.avinash.HotfixLogUI.Model.ECPLog"%>
 <%@page import="com.avinash.HotfixLogUI.Model.ECPLogResponseObject"%>
+<%@ page import = "java.util.ResourceBundle" %>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.io.Reader"%>
 <%@page import="java.io.InputStreamReader"%>
@@ -152,7 +153,12 @@
 				try {
 					System.out.println("ParamString: "+paramString);
 
-					URL url = new URL("http://localhost:7777/HFLogViewer/getAllResults" + paramString);
+                    ResourceBundle resource = ResourceBundle.getBundle("application");
+                    String service_endpoint=resource.getString("serviceEndpoint");
+
+                    System.out.println("Value = "+service_endpoint);
+
+					URL url = new URL( service_endpoint + paramString);
 					con = (HttpURLConnection) url.openConnection();
 					con.setRequestMethod("GET");
 					con.setRequestProperty("Content-Type", "application/json");
@@ -208,7 +214,7 @@
 		<%
 			for (int count = 0; count < respObject.getCount(); count++) {
 				ECPLog ecp = new ECPLog();
-				ecp = respObject.getRecords().get(count);
+				ecp = respObject.getDetails().get(count);
 		%>
 		<div id="ecp_image_<%=ecp.get_id()%>">
 		<a class="list-group-item list-group-item-action hf-details-parent"
