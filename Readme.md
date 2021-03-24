@@ -12,7 +12,7 @@ This application searches for the Hotfix details from the NoSQL database and dis
 - You can automate the processes (Starting MongoDB, REST Server, Frontend Server) using the script `Start_all_processes.bat`.
 - Change the paths in above file.
 
-![](https://komarev.com/ghpvc/?username=tingreavinash&color=green)
-
+    
 ##Working Demo
-![Frontend Live Demo](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+![Frontend Live Demo](https://github.com/tingreavinash/HotfixLogViewer_UI/blob/HotfixLogUI/readme_files/Demo.gif)
