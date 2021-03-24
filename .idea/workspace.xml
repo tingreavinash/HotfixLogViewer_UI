@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75a2a8d7-90d9-4808-b65a-cc18aa0002fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/error.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/style-error.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/image/sad-emoji.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme_files/Demo.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/avinash/HotfixLogUI/Controller/UserInterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/avinash/HotfixLogUI/Controller/UserInterfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hotfixIndex.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hotfixIndex.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hotfixResult.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hotfixResult.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +47,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/image" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -58,8 +55,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Personal\My Projects\HotfixLogViewer_UI\assets" />
       <recent name="C:\Personal\My Projects\HotfixLogViewer_UI\src\main\webapp\image" />
       <recent name="C:\Personal\My Projects\HotfixLogViewer_UI\src\main\webapp\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Personal\My Projects\HotfixLogViewer_UI" />
+      <recent name="C:\Personal\My Projects\HotfixLogViewer_UI\assets" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -180,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615983378846</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add error page">
+      <created>1615993103054</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615993103054</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,6 +213,7 @@
     <MESSAGE value="Working example" />
     <MESSAGE value="Revert dummy names" />
     <MESSAGE value="Load dynamic versions and modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="Load dynamic versions and modules" />
+    <MESSAGE value="Add error page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add error page" />
   </component>
 </project>

@@ -175,8 +175,6 @@
 
 	</div>
 	<div class="alert Box-header text-center">
-		<span style="font-size: 13px; color: white"
-			class="badge badge-warning badge-mb">Search Query: </span>
 		<%=show_input%>
 	</div>
 	<div class="list-group " id="hflist" style="margin-top: 10px;">
