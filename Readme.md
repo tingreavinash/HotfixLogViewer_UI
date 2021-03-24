@@ -13,6 +13,6 @@ This application searches for the Hotfix details from the NoSQL database and dis
 - Change the paths in above file.
 
     
-##Working Demo
+## Working Demo
 
 ![Frontend Live Demo](https://github.com/tingreavinash/HotfixLogViewer_UI/blob/HotfixLogUI/readme_files/Demo.gif)
