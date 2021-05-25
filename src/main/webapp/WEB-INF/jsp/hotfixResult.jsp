@@ -153,11 +153,9 @@
 		show_input = show_input.concat("<b><em>Files released:</em></b> " + filesReleasedToCustomer + ", ");
 			if (specificFunc != "")
 		show_input = show_input.concat("<b><em>Specific function:</em></b> " + specificFunc + ", ");
-			System.out.println("ParamString: " + paramString);
 			ResourceBundle resource = ResourceBundle.getBundle("application");
 			String getAllResultsEndpoint = resource.getString("getAllResultsEndpoint");
 
-			System.out.println("Value = " + getAllResultsEndpoint);
 
 			ObjectMapper objectMapper = new ObjectMapper();
 			String fullUrl = getAllResultsEndpoint + paramString;

@@ -56,8 +56,6 @@ html, body {
 
 	System.out.println("\nHotfix Log Viewer");
 	System.out.println("Time:\t" + new Date());
-	System.out.println("IP:\t" + ip.getHostAddress().toString());
-	System.out.println("Host:\t" + ip.getHostName().toString());
 
 	/*		try{
 	 String auth = request.getHeader("Authorization");
