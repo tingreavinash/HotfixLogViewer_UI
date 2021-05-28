@@ -61,13 +61,9 @@ Follow below steps, If you want to setup this application locally on your machin
    ```java
    mvn clean install
    ```
-3. Go to the target folder and Run the application
+3. Go to the target folder and Start the application
    ```java
    java -jar HotfixLogUI-0.0.1-SNAPSHOT.war
-   ```
-4. Access the application in your brower with below URL
-   ```java
-   http://localhost/HotfixLogUI/
    ```
 
 ## :page_with_curl: Application Configuration
