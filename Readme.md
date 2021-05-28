@@ -1,18 +1,95 @@
-# Hotfix Log Viewer
+<!-- PROJECT LOGO -->
 
-## Description
+<p align="center">
 
-This application searches for the Hotfix details from the NoSQL database and displays the result.
+<h3 align="center">Hotfix Log Viewer</h3>
 
-## How To Use
-- The application is by default started on port 5555. You can access this on URL : *http://localhost:5555*.
-- You can change the port in ***application.properties*** file.
+  <p align="center">
+    Web application for searching the details of hotfix. [Internal Tool]
+    <br />
 
-## Automation Script
-- You can automate the processes (Starting MongoDB, REST Server, Frontend Server) using the script `Start_all_processes.bat`.
-- Change the paths in above file.
+  </p>
+</p>
 
-    
-## Working Demo
 
-![Frontend Live Demo](https://github.com/tingreavinash/HotfixLogViewer_UI/blob/HotfixLogUI/readme_files/Demo.gif)
+
+
+
+<!-- ABOUT THE PROJECT -->
+
+## :hourglass: Project Demo
+![Hotfix Log Viewer Screen Shot](https://user-images.githubusercontent.com/39552348/120003044-fe0a2280-bff2-11eb-852e-71d858723d4f.gif)
+
+
+## :bulb: About The Project
+#### Frontend Application:
+* Using this tool teammates can search for available hotfixes in database. Multiple filters are provided for narrowing the scope of results.
+* It was a frequent task to search the available hotfixes, and we used to manually search in the excel sheet every time.
+* This tool is specific to my team because of the restrictions of excel data format.
+
+#### Backend Application:
+* [Link to the project](https://github.com/tingreavinash/HotfixService)
+
+## :warning: Techstack/Framework Used
+
+This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+* CSS/Bootstrap
+* HTML
+* JSP
+* Javascript
+
+
+
+<!-- GETTING STARTED -->
+## :syringe: Getting Started
+
+Follow below steps, If you want to setup this application locally on your machine.
+
+### Prerequisites
+
+* Maven Build Tool 
+* JDK 8+
+* Data provider service [Link](https://github.com/tingreavinash/HotfixService)
+
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/tingreavinash/HotfixLogViewer_UI.git
+   ```
+2. Go to the project folder and Build the project
+   ```java
+   mvn clean install
+   ```
+3. Go to the target folder and Run the application
+   ```java
+   java -jar HotfixLogUI-0.0.1-SNAPSHOT.war
+   ```
+4. Access the application in your brower with below URL
+   ```java
+   http://localhost/HotfixLogUI/
+   ```
+
+## :page_with_curl: Application Configuration
+The application configuration can be found here - [Click Here](https://github.com/chandrikadeb7/Plagiarism-Remover-Tool/blob/main/rephrase.sql)
+
+<!-- USAGE EXAMPLES -->
+## :bomb: Usage
+
+You can directly access the application in your browser with below URL
+   ```JS
+   http://localhost/HotfixLogUI/
+   ```
+
+<!-- LICENSE -->
+## :blue_book: License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
+<!-- CONTACT -->
+## :heart: Contributor
+
+Avinash Tingre - [Connect with me on LinkedIn](https://www.linkedin.com/in/abtingre/)
