@@ -67,7 +67,7 @@ Follow below steps, If you want to setup this application locally on your machin
    ```
 
 ## :page_with_curl: Application Configuration
-The application configuration can be found here - [Click Here](https://github.com/chandrikadeb7/Plagiarism-Remover-Tool/blob/main/rephrase.sql)
+The application configuration can be found here - [Click Here](https://github.com/tingreavinash/HotfixLogViewer_UI/blob/master/src/main/resources/application.properties)
 
 <!-- USAGE EXAMPLES -->
 ## :bomb: Usage
